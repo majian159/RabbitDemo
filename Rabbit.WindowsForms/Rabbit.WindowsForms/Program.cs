@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Rabbit.Core;
 using Rabbit.Kernel;
 using Rabbit.Kernel.Caching;
 using Rabbit.Kernel.Caching.Impl;
@@ -21,7 +22,7 @@ namespace Rabbit.WindowsForms
             Application.SetCompatibleTextRenderingDefault(false);
             var kernelBuilder = new KernelBuilder();
 
-            kernelBuilder.OnStarting(builder => builder.RegisterType<MainForm>().InstancePerLifetimeScope());
+            kernelBuilder.OnStarting(builder => builder.RegisterType<MainForm>().AsSelf().As<IUserInterfaceController>().InstancePerLifetimeScope());
             kernelBuilder.UseCaching(c => c.UseMemoryCache());
 
             var hostContainer = kernelBuilder.Build();
@@ -29,7 +30,6 @@ namespace Rabbit.WindowsForms
             host.Initialize();
 
             var work = host.CreateStandaloneEnvironment(new ShellSettings { Name = "Default" });
-
             var form = work.Resolve<MainForm>();
             Application.Run(form);
         }

@@ -1,0 +1,11 @@
+﻿Name: Rabbit.HelloWorld
+Category: Default
+Description: 
+FeatureDescription: 
+Version: 1.0.0.0
+KernelVersion: 1.0.0.0
+WebSite: 
+Company: 
+Author: majian
+Tags: 
+Dependencies: 
