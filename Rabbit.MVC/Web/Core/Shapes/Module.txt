@@ -1,0 +1,12 @@
+﻿Name: Shapes
+Category: Core
+Description: 形状模块包含核心形状模板。
+FeatureDescription: 核心形状模板。
+Version: 1.0.0.0
+KernelVersion: 1.0.0.0
+WebSite: 
+Company: 
+Author: majian
+Tags: 
+Dependencies: 
+Features: 

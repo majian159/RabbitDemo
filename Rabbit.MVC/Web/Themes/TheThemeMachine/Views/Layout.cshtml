@@ -1,0 +1,18 @@
+﻿@{
+    Func<dynamic, dynamic> zone = x => Display(x);
+
+    string title = Convert.ToString(Model.Title);
+    var tenantName = Convert.ToString(WorkContext.CurrentTenant.TenantName);
+}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>@string.Format("{0} - {1}", title, tenantName)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @(Html.Raw(zone(Model.Style)))
+    @(Html.Raw(zone(Model.Script)))
+</head>
+<body>
+    @zone(Model.Content)
+</body>
+</html>

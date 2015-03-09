@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{78633FFA-E790-40D9-8667-6648A086E37E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{626EE0F1-F931-4D5F-8EA4-52B69B6AC17B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Themes", "Themes", "{197ECB5A-42BE-4A32-BEDD-42A9546CD0D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.Core", "Web\Core\Rabbit.Core.csproj", "{EEE7D410-42B1-419E-96FB-A29BC782F41B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themes", "Web\Themes\Themes.csproj", "{CE4A1AD0-FDE2-4B30-9CDA-CC44733FC589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.UserInterface", "Web\Modules\Rabbit.UserInterface\Rabbit.UserInterface.csproj", "{27A6D377-F627-4571-8A82-DEDDBA936DC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78633FFA-E790-40D9-8667-6648A086E37E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78633FFA-E790-40D9-8667-6648A086E37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78633FFA-E790-40D9-8667-6648A086E37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78633FFA-E790-40D9-8667-6648A086E37E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE7D410-42B1-419E-96FB-A29BC782F41B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE7D410-42B1-419E-96FB-A29BC782F41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE7D410-42B1-419E-96FB-A29BC782F41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE7D410-42B1-419E-96FB-A29BC782F41B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4A1AD0-FDE2-4B30-9CDA-CC44733FC589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4A1AD0-FDE2-4B30-9CDA-CC44733FC589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4A1AD0-FDE2-4B30-9CDA-CC44733FC589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4A1AD0-FDE2-4B30-9CDA-CC44733FC589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27A6D377-F627-4571-8A82-DEDDBA936DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A6D377-F627-4571-8A82-DEDDBA936DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A6D377-F627-4571-8A82-DEDDBA936DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A6D377-F627-4571-8A82-DEDDBA936DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE4A1AD0-FDE2-4B30-9CDA-CC44733FC589} = {197ECB5A-42BE-4A32-BEDD-42A9546CD0D8}
+		{27A6D377-F627-4571-8A82-DEDDBA936DC9} = {626EE0F1-F931-4D5F-8EA4-52B69B6AC17B}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,2408 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rabbit.Web.Mvc</name>
+    </assembly>
+    <members>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.DefaultNavigationManager.BuildMenu(System.String)">
+            <summary>
+            生成菜单。
+            </summary>
+            <param name="menuName">菜单名称。</param>
+            <returns>菜单项集合。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.DefaultNavigationManager.BuildImageSets(System.String)">
+            <summary>
+            生成图片集。
+            </summary>
+            <param name="menuName">菜单名称。</param>
+            <returns>图片集。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.DefaultNavigationManager.GetUrl(System.String,System.Web.Routing.RouteValueDictionary)">
+            <summary>
+            获取菜单Url。
+            </summary>
+            <param name="menuItemUrl">菜单项Url。</param>
+            <param name="routeValueDictionary">路由值。</param>
+            <returns>Url。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.Filters.IFilterProvider">
+            <summary>
+            一个抽象的筛选器提供程序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.MenuFilter.OnResultExecuting(System.Web.Mvc.ResultExecutingContext)">
+            <summary>
+            在操作结果执行之前调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.MenuFilter.OnResultExecuted(System.Web.Mvc.ResultExecutedContext)">
+            <summary>
+            在操作结果执行后调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.Navigation.MenuItemComparer">
+            <summary>
+            菜单项比较器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.MenuItemComparer.Equals(Rabbit.Web.UI.Navigation.MenuItem,Rabbit.Web.UI.Navigation.MenuItem)">
+            <summary>
+            确定指定的对象是否相等。
+            </summary>
+            <returns>
+            如果指定的对象相等，则为 true；否则为 false。
+            </returns>
+            <param name="x">要比较的第一个类型为 <see name="T"/> 的对象。</param><param name="y">要比较的第二个类型为 <see name="T"/> 的对象。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.MenuItemComparer.GetHashCode(Rabbit.Web.UI.Navigation.MenuItem)">
+            <summary>
+            返回指定对象的哈希代码。
+            </summary>
+            <returns>
+            指定对象的哈希代码。
+            </returns>
+            <param name="obj"><see cref="T:System.Object"/>，将为其返回哈希代码。</param><exception cref="T:System.ArgumentNullException"><paramref name="obj"/> 的类型为引用类型，<paramref name="obj"/> 为 null。</exception>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.Navigation.NavigationHelper">
+            <summary>
+            导航帮助者。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.NavigationHelper.PopulateMenu(System.Object,System.Object,System.Object,System.Collections.Generic.IEnumerable{Rabbit.Web.UI.Navigation.MenuItem})">
+            <summary>
+            填充菜单的形状。
+            </summary>
+            <param name="shapeFactory">形状工厂。</param>
+            <param name="parentShape">菜单父级形状。</param>
+            <param name="menu">菜单形状。</param>
+            <param name="menuItems">当前等级填充形状。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.NavigationHelper.BuildMenuItemShape(System.Object,System.Object,System.Object,Rabbit.Web.UI.Navigation.MenuItem)">
+            <summary>
+            构建一个菜单项形状。
+            </summary>
+            <param name="shapeFactory">形状工厂。</param>
+            <param name="parentShape">菜单父级形状。</param>
+            <param name="menu">菜单形状。</param>
+            <param name="menuItem">构建一个菜单项形状。</param>
+            <returns>菜单项的形状。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.NavigationHelper.SetSelectedPath(System.Collections.Generic.IEnumerable{Rabbit.Web.UI.Navigation.MenuItem},System.Web.HttpRequestBase,System.Web.Routing.RouteValueDictionary)">
+            <summary>
+            标识当前选择的路径中，从所选择的节点开始。
+            </summary>
+            <param name="menuItems">在导航菜单中的所有菜单项。</param>
+            <param name="currentRequest">当前执行的请求。</param>
+            <param name="currentRouteData">当前的路由数据。</param>
+            <returns>堆栈的选择路径是最后一个节点的当前所选之一。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.NavigationHelper.RouteMatches(System.Web.Routing.RouteValueDictionary,System.Web.Routing.RouteValueDictionary)">
+            <summary>
+            确定一个菜单项对应于给定的路线。
+            </summary>
+            <param name="itemValues">菜单项。</param>
+            <param name="requestValues">路由数据。</param>
+            <returns>如果该菜单项的动作对应于路由数据返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.NavigationHelper.PopulateLocalMenu(System.Object,System.Object,System.Object,System.Collections.Generic.Stack{Rabbit.Web.UI.Navigation.MenuItem})">
+            <summary>
+            从填充的第一个非本地任务的父开始本地菜单。
+            </summary>
+            <param name="shapeFactory">形状工厂。</param>
+            <param name="parentShape">菜单父级形状。</param>
+            <param name="menu">菜单形状。</param>
+            <param name="selectedPath">选择路径。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.NavigationHelper.PopulateLocalMenu(System.Object,System.Object,System.Object,System.Collections.Generic.IEnumerable{Rabbit.Web.UI.Navigation.MenuItem})">
+            <summary>
+            填入本地菜单的形状。
+            </summary>
+            <param name="shapeFactory">形状工厂。</param>
+            <param name="parentShape">菜单父级形状。</param>
+            <param name="menu">菜单形状。</param>
+            <param name="menuItems">当前等级填充形状。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.NavigationHelper.FindParentLocalTask(System.Collections.Generic.Stack{Rabbit.Web.UI.Navigation.MenuItem})">
+            <summary>
+            发现在选择路径的第一级，从底部开始，这不是一个本地任务。
+            </summary>
+            <param name="selectedPath">选择路径堆栈。底部节点是当前选定的1。</param>
+            <returns>在第一个节点，从底部开始，这不是一个本地任务。否则，返回null。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Navigation.NavigationHelper.BuildLocalMenuItemShape(System.Object,System.Object,System.Object,Rabbit.Web.UI.Navigation.MenuItem)">
+            <summary>
+            构建一个本地的菜单项形状。
+            </summary>
+            <param name="shapeFactory">形状工厂。</param>
+            <param name="parentShape">菜单父级形状。</param>
+            <param name="menu">菜单形状。</param>
+            <param name="menuItem">构建一个菜单项形状。</param>
+            <returns>菜单项的形状。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.WebBuilderExtensions">
+            <summary>
+                建设者扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebBuilderExtensions.EnableMvc(Rabbit.Web.BuilderExtensions.IWebBuilder,System.Web.Mvc.ModelBinderDictionary,System.Web.Mvc.ViewEngineCollection)">
+            <summary>
+                启用Mvc。
+            </summary>
+            <param name="webBuilder">Web建设者。</param>
+            <param name="binders">模型绑定字典表，如果为 null 则默认为 ModelBinders.Binders。</param>
+            <param name="engines">视图引擎集合，如果为 null 则默认为 ViewEngines.Engines。</param>
+            <returns>Web 建设者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.CompositionStrategyProvider.Apply(Rabbit.Kernel.Environment.ShellBuilders.CompositionStrategyApplyContext)">
+            <summary>
+            应用。
+            </summary>
+            <param name="context">组合策略应用上下文。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Shapes.ITagBuilderFactory">
+            <summary>
+            一个抽象的标签建造器工厂。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.ITagBuilderFactory.Create(System.Object,System.String)">
+            <summary>
+            创建标签建造器。
+            </summary>
+            <param name="shape">形状。</param>
+            <param name="tagName">标签名称。</param>
+            <returns>标签建造器。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Impl.DefaultTagBuilderFactory.Create(System.Object,System.String)">
+            <summary>
+            创建标签建造器。
+            </summary>
+            <param name="shape">形状。</param>
+            <param name="tagName">标签名称。</param>
+            <returns>标签建造器。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Extensions.Folders.CoreModuleFolders.AvailableExtensions">
+            <summary>
+            可用的扩展。
+            </summary>
+            <returns>扩展描述条目符集合。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Extensions.Folders.ThemeFolders.AvailableExtensions">
+            <summary>
+            可用的扩展。
+            </summary>
+            <returns>扩展描述条目符集合。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Extensions.Loaders.CoreExtensionLoader.#ctor(Rabbit.Kernel.FileSystems.Dependencies.IDependenciesFolder,Rabbit.Kernel.Environment.Assemblies.IAssemblyLoader)">
+            <summary>
+            初始化一个新的扩展装载机。
+            </summary>
+            <param name="dependenciesFolder">依赖文件夹。</param>
+            <param name="assemblyLoader">程序集加载器。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Extensions.Loaders.CoreExtensionLoader.Probe(Rabbit.Kernel.Extensions.Models.ExtensionDescriptorEntry)">
+            <summary>
+            探测。
+            </summary>
+            <param name="descriptor">扩展描述符条目。</param>
+            <returns>扩展探测条目。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Extensions.Loaders.CoreExtensionLoader.LoadWorker(Rabbit.Kernel.Extensions.Models.ExtensionDescriptorEntry)">
+            <summary>
+            装载工作。
+            </summary>
+            <param name="descriptor">扩展描述符条目。</param>
+            <returns>扩展条目。</returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Extensions.Loaders.CoreExtensionLoader.Order">
+            <summary>
+            排序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Extensions.Loaders.RawThemeExtensionLoader.#ctor(Rabbit.Kernel.FileSystems.Dependencies.IDependenciesFolder,Rabbit.Kernel.FileSystems.VirtualPath.IVirtualPathProvider)">
+            <summary>
+            初始化一个新的扩展装载机。
+            </summary>
+            <param name="dependenciesFolder">依赖文件夹。</param>
+            <param name="virtualPathProvider">虚拟路提供程序。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Extensions.Loaders.RawThemeExtensionLoader.Probe(Rabbit.Kernel.Extensions.Models.ExtensionDescriptorEntry)">
+            <summary>
+            探测。
+            </summary>
+            <param name="descriptor">扩展描述符条目。</param>
+            <returns>扩展探测条目。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Extensions.Loaders.RawThemeExtensionLoader.LoadWorker(Rabbit.Kernel.Extensions.Models.ExtensionDescriptorEntry)">
+            <summary>
+            装载工作。
+            </summary>
+            <param name="descriptor">扩展描述符条目。</param>
+            <returns>扩展条目。</returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Extensions.Loaders.RawThemeExtensionLoader.Order">
+            <summary>
+            排序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.Filters.RabbitFilterProvider.GetFilters(System.Web.Mvc.ControllerContext,System.Web.Mvc.ActionDescriptor)">
+            <summary>
+            返回一个包含服务定位器中的所有 <see cref="T:System.Web.Mvc.IFilterProvider"/> 实例的枚举器。
+            </summary>
+            <returns>
+            包含服务定位器中的所有 <see cref="T:System.Web.Mvc.IFilterProvider"/> 实例的枚举器。
+            </returns>
+            <param name="controllerContext">控制器上下文。</param><param name="actionDescriptor">操作描述符。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.Html.HtmlHelperExtensions">
+            <summary>
+            Html助手扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.Html.HtmlHelperExtensions.GetWorkContext(System.Web.Mvc.HtmlHelper)">
+            <summary>
+            获取工作上下文。
+            </summary>
+            <param name="html">Html助手。</param>
+            <returns>工作上下文。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.ModelBinders.IModelBinderProvider">
+            <summary>
+            一个抽象的模型绑定提供程序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ModelBinders.IModelBinderProvider.GetModelBinders">
+            <summary>
+            获取模型绑定程序。
+            </summary>
+            <returns>绑定程序集合。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.ModelBinders.IModelBinderPublisher">
+            <summary>
+            一个抽象的模型绑定程序发布者。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ModelBinders.IModelBinderPublisher.Publish(System.Collections.Generic.IEnumerable{Rabbit.Web.Mvc.Mvc.ModelBinders.ModelBinderDescriptor})">
+            <summary>
+            发布。
+            </summary>
+            <param name="binders">绑定信息。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ModelBinders.Impl.DefaultModelBinderPublisher.Publish(System.Collections.Generic.IEnumerable{Rabbit.Web.Mvc.Mvc.ModelBinders.ModelBinderDescriptor})">
+            <summary>
+            发布。
+            </summary>
+            <param name="binders">绑定信息。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.ModelBinders.ModelBinderDescriptor">
+            <summary>
+            模型绑定程序描述符。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ModelBinders.ModelBinderDescriptor.Type">
+            <summary>
+            类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ModelBinders.ModelBinderDescriptor.ModelBinder">
+            <summary>
+            模型绑定者。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.MvcModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Override to add registrations to the container.
+            </summary>
+            <remarks>
+            Note that the ContainerBuilder parameter is unique to this module.
+            </remarks>
+            <param name="builder">The builder through which components can be
+                        registered.</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.RabbitControllerFactory.GetControllerType(System.Web.Routing.RequestContext,System.String)">
+            <summary>
+            检索指定名称和请求上下文的控制器类型。
+            </summary>
+            <returns>
+            控制器类型。
+            </returns>
+            <param name="requestContext">HTTP 请求的上下文，其中包括 HTTP 上下文和路由数据。</param><param name="controllerName">控制器的名称。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.RabbitControllerFactory.GetControllerInstance(System.Web.Routing.RequestContext,System.Type)">
+            <summary>
+            检索指定请求上下文和控制器类型的控制器实例。
+            </summary>
+            <returns>
+            控制器实例。
+            </returns>
+            <param name="requestContext">HTTP 请求的上下文，其中包括 HTTP 上下文和路由数据。</param><param name="controllerType">控制器的类型。</param><exception cref="T:System.Web.HttpException"><paramref name="controllerType"/> 为 null。</exception><exception cref="T:System.ArgumentException">无法分配 <paramref name="controllerType"/>。</exception><exception cref="T:System.InvalidOperationException">无法创建 <paramref name="controllerType"/> 的实例。</exception>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.Impl.LayoutAwareViewEngine.FindPartialView(System.Web.Mvc.ControllerContext,System.String,System.Boolean)">
+            <summary>
+            使用指定的控制器上下文查找指定的分部视图。
+            </summary>
+            <returns>
+            分部视图。
+            </returns>
+            <param name="controllerContext">控制器上下文。</param><param name="partialViewName">分部视图的名称。</param><param name="useCache">若指定视图引擎返回缓存的视图（如果存在缓存的视图），则为 true；否则为 false。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.Impl.LayoutAwareViewEngine.FindView(System.Web.Mvc.ControllerContext,System.String,System.String,System.Boolean)">
+            <summary>
+            使用指定的控制器上下文来查找指定的视图。
+            </summary>
+            <returns>
+            页视图。
+            </returns>
+            <param name="controllerContext">控制器上下文。</param><param name="viewName">视图的名称。</param><param name="masterName">母版的名称。</param><param name="useCache">若指定视图引擎返回缓存的视图（如果存在缓存的视图），则为 true；否则为 false。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.Impl.LayoutAwareViewEngine.ReleaseView(System.Web.Mvc.ControllerContext,System.Web.Mvc.IView)">
+            <summary>
+            使用指定的控制器上下文来释放指定的视图。
+            </summary>
+            <param name="controllerContext">控制器上下文。</param><param name="view">视图。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.ThemeAwareViewEngineShim.FindPartialView(System.Web.Mvc.ControllerContext,System.String,System.Boolean)">
+            <summary>
+            使用指定的控制器上下文查找指定的分部视图。
+            </summary>
+            <returns>
+            分部视图。
+            </returns>
+            <param name="controllerContext">控制器上下文。</param><param name="partialViewName">分部视图的名称。</param><param name="useCache">若指定视图引擎返回缓存的视图（如果存在缓存的视图），则为 true；否则为 false。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.ThemeAwareViewEngineShim.FindView(System.Web.Mvc.ControllerContext,System.String,System.String,System.Boolean)">
+            <summary>
+            使用指定的控制器上下文来查找指定的视图。
+            </summary>
+            <returns>
+            页视图。
+            </returns>
+            <param name="controllerContext">控制器上下文。</param><param name="viewName">视图的名称。</param><param name="masterName">母版的名称。</param><param name="useCache">若指定视图引擎返回缓存的视图（如果存在缓存的视图），则为 true；否则为 false。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.ThemeAwareViewEngineShim.ReleaseView(System.Web.Mvc.ControllerContext,System.Web.Mvc.IView)">
+            <summary>
+            使用指定的控制器上下文来释放指定的视图。
+            </summary>
+            <param name="controllerContext">控制器上下文。</param><param name="view">视图。</param>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.ThemeAwareViewEngineShim.HostContainer">
+            <summary>
+            主机容器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.ThemedViewResultFilter.OnResultExecuting(System.Web.Mvc.ResultExecutingContext)">
+            <summary>
+            在操作结果执行之前调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.ThemedViewResultFilter.OnResultExecuted(System.Web.Mvc.ResultExecutedContext)">
+            <summary>
+            在操作结果执行后调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.ShellContainerRegistrations.Registrations(Autofac.ContainerBuilder,Rabbit.Kernel.Environment.ShellBuilders.Models.ShellBlueprint)">
+            <summary>
+            注册动作。
+            </summary>
+            <param name="builder">容器建造者。</param>
+            <param name="blueprint">外壳蓝图。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.ShellEvents.Activated">
+            <summary>
+            激活外壳完成后执行。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.ShellEvents.Terminating">
+            <summary>
+            终止外壳前候执行。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Themes.ThemedAttribute">
+            <summary>
+            主题标记。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Themes.ThemedAttribute.#ctor">
+            <summary>
+            初始化一个新的主题标记。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Themes.ThemedAttribute.#ctor(System.Boolean)">
+            <summary>
+            初始化一个新的主题标记。
+            </summary>
+            <param name="enabled">是否启用主题。</param>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Themes.ThemedAttribute.Enabled">
+            <summary>
+            是否启用主题。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Themes.ThemeFilter">
+            <summary>
+            主题过滤器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Themes.ThemeFilter.OnActionExecuting(System.Web.Mvc.ActionExecutingContext)">
+            <summary>
+            在执行操作方法之前调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Themes.ThemeFilter.OnActionExecuted(System.Web.Mvc.ActionExecutedContext)">
+            <summary>
+            在执行操作方法后调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Themes.ThemeFilter.OnResultExecuting(System.Web.Mvc.ResultExecutingContext)">
+            <summary>
+            在操作结果执行之前调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Themes.ThemeFilter.OnResultExecuted(System.Web.Mvc.ResultExecutedContext)">
+            <summary>
+            在操作结果执行后调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.Admin.AdminAttribute">
+            <summary>
+            管理标记。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.Admin.AdminFilter">
+            <summary>
+            管理员过滤器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Admin.AdminFilter.OnAuthorization(System.Web.Mvc.AuthorizationContext)">
+            <summary>
+            在需要授权时调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Admin.AdminFilter.IsApplied(System.Web.Routing.RequestContext)">
+            <summary>
+            是否应用了管理过滤器。
+            </summary>
+            <param name="context">请求上下文。</param>
+            <returns>如果应用了管理过滤器则返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Admin.AdminThemeSelector.GetTheme(System.Web.Routing.RequestContext)">
+            <summary>
+            根据当前请求获取主题。
+            </summary>
+            <param name="context">请求上下文。</param>
+            <returns>主题选择结果。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.FlatPositionComparer">
+            <summary>
+            屏幕位置比较器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.FlatPositionComparer.Compare(System.String,System.String)">
+            <summary>
+            比较两个对象并返回一个值，指示一个对象是小于、等于还是大于另一个对象。
+            </summary>
+            <returns>
+            一个带符号整数，它指示 <paramref name="x"/> 与 <paramref name="y"/> 的相对值，如下表所示。值含义小于零<paramref name="x"/> 小于 <paramref name="y"/>。零<paramref name="x"/> 等于 <paramref name="y"/>。大于零<paramref name="x"/> 大于 <paramref name="y"/>。
+            </returns>
+            <param name="x">要比较的第一个对象。</param><param name="y">要比较的第二个对象。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.IPage">
+            <summary>
+            一个抽象的页面接口。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.UI.IPage.Zones">
+            <summary>
+            区域集合。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.IZoneCollection">
+            <summary>
+            区域集合接口。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.UI.IZoneCollection.Item(System.String)">
+            <summary>
+            根据 <paramref name="key"/> 获取区域实例，如果对应的区域不存在则创建一个新的区域并返回。
+            </summary>
+            <param name="key">区域key。</param>
+            <returns>区域实例。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.ZoneCollection">
+            <summary>
+            区域集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.UI.ZoneCollection.Item(System.String)">
+            <summary>
+            根据 <paramref name="key"/> 获取区域实例，如果对应的区域不存在则创建一个新的区域并返回。
+            </summary>
+            <param name="key">区域key。</param>
+            <returns>区域实例。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.IZone">
+            <summary>
+            一个抽象的区域接口。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.IZone.Add(System.Object,System.String)">
+            <summary>
+            添加形状。
+            </summary>
+            <param name="item">形状项。</param>
+            <param name="position">位置。</param>
+            <returns>形状。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.IZone.Add(System.Action{System.Web.Mvc.HtmlHelper},System.String)">
+            <summary>
+            添加形状。
+            </summary>
+            <param name="action">对Html助手的动作。</param>
+            <param name="position">位置。</param>
+            <returns>区域本身。</returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.UI.IZone.ZoneName">
+            <summary>
+            区域名称。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.Zone">
+            <summary>
+            区域实现。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape">
+            <summary>
+            形状。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite">
+            <summary>
+            一个混合的动态对象。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            为获取成员值的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为诸如获取属性值这样的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发运行时异常。）
+            </returns>
+            <param name="binder">提供有关调用了动态操作的对象的信息。binder.Name 属性提供针对其执行动态操作的成员的名称。例如，对于 Console.WriteLine(sampleObject.SampleProperty) 语句（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Name 将返回“SampleProperty”。binder.IgnoreCase 属性指定成员名称是否区分大小写。</param><param name="result">获取操作的结果。例如，如果为某个属性调用该方法，则可以为 <paramref name="result"/> 指派该属性值。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">
+            <summary>
+            为设置成员值的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为诸如设置属性值这样的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关调用了动态操作的对象的信息。binder.Name 属性提供将该值分配到的成员的名称。例如，对于语句 sampleObject.SampleProperty = "Test"（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Name 将返回“SampleProperty”。binder.IgnoreCase 属性指定成员名称是否区分大小写。</param><param name="value">要为成员设置的值。例如，对于 sampleObject.SampleProperty = "Test"（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），<paramref name="value"/> 为“Test”。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+            <summary>
+            为调用成员的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为诸如调用方法这样的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关动态操作的信息。binder.Name 属性提供针对其执行动态操作的成员的名称。例如，对于语句 sampleObject.SampleMethod(100)（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Name 将返回“SampleMethod”。binder.IgnoreCase 属性指定成员名称是否区分大小写。</param><param name="args">调用操作期间传递给对象成员的参数。例如，对于语句 sampleObject.SampleMethod(100)（其中 sampleObject 派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类），<paramref name="args[0]"/> 等于 100。</param><param name="result">成员调用的结果。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.TryGetIndex(System.Dynamic.GetIndexBinder,System.Object[],System.Object@)">
+            <summary>
+            为按索引获取值的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为索引操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发运行时异常。）
+            </returns>
+            <param name="binder">提供有关该操作的信息。</param><param name="indexes">该操作中使用的索引。例如，对于 C# 中的 sampleObject[3] 操作（Visual Basic 中为 sampleObject(3)）（其中 sampleObject 派生自 DynamicObject 类），<paramref name="indexes[0]"/> 等于 3。</param><param name="result">索引操作的结果。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.TrySetIndex(System.Dynamic.SetIndexBinder,System.Object[],System.Object)">
+            <summary>
+            为按索引设置值的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为按指定索引访问对象的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关该操作的信息。</param><param name="indexes">该操作中使用的索引。例如，对于 C# 中的 sampleObject[3] = 10 操作（Visual Basic 中为 sampleObject(3) = 10）（其中 sampleObject 派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类），<paramref name="indexes[0]"/> 等于 3。</param><param name="value">要为具有指定索引的对象设置的值。例如，对于 C# 中的 sampleObject[3] = 10 操作（Visual Basic 中为 sampleObject(3) = 10）（其中 sampleObject 派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类），<paramref name="value"/> 等于 10。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.TrySetMemberImpl(System.String,System.Object)">
+            <summary>
+            尝试对成员进行赋值。
+            </summary>
+            <param name="name">成员名称。</param>
+            <param name="value">值。</param>
+            <returns>如果成功返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.TryGetMemberImpl(System.String,System.Object@)">
+            <summary>
+            尝试获取成员值。
+            </summary>
+            <param name="name">成员名称。</param>
+            <param name="result">成员值。</param>
+            <returns>如果成功返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.op_Equality(Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite,Rabbit.Web.Mvc.DisplayManagement.Shapes.Nil)">
+            <summary>
+            <paramref name="a"/> 与 <paramref name="b"/> 是否相等。
+            </summary>
+            <param name="a">对象1.</param>
+            <param name="b">对象2.</param>
+            <returns>如果相等则返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.op_Inequality(Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite,Rabbit.Web.Mvc.DisplayManagement.Shapes.Nil)">
+            <summary>
+            <paramref name="a"/> 与 <paramref name="b"/> 是否不相等。
+            </summary>
+            <param name="a">对象1.</param>
+            <param name="b">对象2.</param>
+            <returns>如果不相等则返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.Equals(Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite)">
+            <summary>
+            确定指定的 <see cref="T:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite"/> 是否等于当前的 <see cref="T:System.Object"/>。
+            </summary>
+            <returns>
+            如果指定的 <see cref="T:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite"/> 等于当前的 <see cref="T:System.Object"/>，则为 true；否则为 false。
+            </returns>
+            <param name="obj">与当前的 <see cref="T:System.Object"/> 进行比较的 <see cref="T:System.Object"/>。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.Equals(System.Object)">
+            <summary>
+            确定指定的 <see cref="T:System.Object"/> 是否等于当前的 <see cref="T:System.Object"/>。
+            </summary>
+            <returns>
+            如果指定的 <see cref="T:System.Object"/> 等于当前的 <see cref="T:System.Object"/>，则为 true；否则为 false。
+            </returns>
+            <param name="obj">与当前的 <see cref="T:System.Object"/> 进行比较的 <see cref="T:System.Object"/>。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.GetHashCode">
+            <summary>
+            用作特定类型的哈希函数。
+            </summary>
+            <returns>
+            当前 <see cref="T:System.Object"/> 的哈希代码。
+            </returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.Properties">
+            <summary>
+            属性字典。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Shapes.Composite.ForwardingMetaObject">
+            <summary>
+            http://blog.tomasm.net/2009/11/07/forwarding-meta-object/
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.IShape">
+            <summary>
+            一个抽象的形状。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.IShape.Metadata">
+            <summary>
+            形状元数据。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.#ctor">
+            <summary>
+            初始化一个新的形状。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.System#Collections#Generic#IEnumerable{System#Object}#GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举器。
+            </summary>
+            <returns>
+            可用于循环访问集合的 <see cref="T:System.Collections.Generic.IEnumerator`1"/>。
+            </returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举器。
+            </summary>
+            <returns>
+            可用于循环访问集合的 <see cref="T:System.Collections.IEnumerator"/> 对象。
+            </returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.Add(System.Object,System.String)">
+            <summary>
+            添加一个形状。
+            </summary>
+            <param name="item">形状项。</param>
+            <param name="position">位置。</param>
+            <returns>形状根。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.AddRange(System.Collections.Generic.IEnumerable{System.Object},System.String)">
+            <summary>
+            添加一组形状。
+            </summary>
+            <param name="items">形状组。</param>
+            <param name="position">位置。</param>
+            <returns>形状根。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.TryConvert(System.Dynamic.ConvertBinder,System.Object@)">
+            <summary>
+            提供类型转换运算的实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为将某个对象从一种类型转换为另一种类型的运算指定动态行为。
+            </summary>
+            <returns>
+            如果此运算成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关转换运算的信息。binder.Type 属性提供必须将对象转换为的类型。例如，对于 C# 中的语句 (String)sampleObject（Visual Basic 中为 CType(sampleObject, Type)）（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Type 将返回 <see cref="T:System.String"/> 类型。binder.Explicit 属性提供有关所发生转换的类型的信息。对于显式转换，它返回 true；对于隐式转换，它返回 false。</param><param name="result">类型转换运算的结果。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.TrySetIndex(System.Dynamic.SetIndexBinder,System.Object[],System.Object)">
+            <summary>
+            为按索引设置值的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为按指定索引访问对象的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关该操作的信息。</param><param name="indexes">该操作中使用的索引。例如，对于 C# 中的 sampleObject[3] = 10 操作（Visual Basic 中为 sampleObject(3) = 10）（其中 sampleObject 派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类），<paramref name="indexes[0]"/> 等于 3。</param><param name="value">要为具有指定索引的对象设置的值。例如，对于 C# 中的 sampleObject[3] = 10 操作（Visual Basic 中为 sampleObject(3) = 10）（其中 sampleObject 派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类），<paramref name="value"/> 等于 10。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+            <summary>
+            为调用成员的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为诸如调用方法这样的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关动态操作的信息。binder.Name 属性提供针对其执行动态操作的成员的名称。例如，对于语句 sampleObject.SampleMethod(100)（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Name 将返回“SampleMethod”。binder.IgnoreCase 属性指定成员名称是否区分大小写。</param><param name="args">调用操作期间传递给对象成员的参数。例如，对于语句 sampleObject.SampleMethod(100)（其中 sampleObject 派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类），<paramref name="args[0]"/> 等于 100。</param><param name="result">成员调用的结果。</param>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.Id">
+            <summary>
+            Id。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.Classes">
+            <summary>
+            样式类名集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.Attributes">
+            <summary>
+            属性集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.Items">
+            <summary>
+            项。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape.Metadata">
+            <summary>
+            形状元数据。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zone.Add(System.Action{System.Web.Mvc.HtmlHelper},System.String)">
+            <summary>
+            添加形状。
+            </summary>
+            <param name="action"></param>
+            <param name="position"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.UI.Zone.ZoneName">
+            <summary>
+            区域名称。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.LayoutWorkContext.Get``1(System.String)">
+            <summary>
+            创建一个从一个工作上下文获取服务的委托。
+            </summary>
+            <typeparam name="T">服务类型。</typeparam>
+            <param name="name">服务名称。</param>
+            <returns>从一个工作上下文获取服务的委托。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.Zones.ZoneHolding">
+            <summary>
+            提供有一个区域属性的形状的行为。
+            例子包括布局和项目
+            * 为区返回一个假的父对象
+            Foo.Zones
+            *
+            Foo.Zones.Alpha :
+            Foo.Zones["Alpha"]
+            Foo.Alpha :同上
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneHolding.#ctor(System.Func{System.Object})">
+            <summary>
+            初始化一个新的区域属性行为。
+            </summary>
+            <param name="zoneFactory"></param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneHolding.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            为获取成员值的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为诸如获取属性值这样的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发运行时异常。）
+            </returns>
+            <param name="binder">提供有关调用了动态操作的对象的信息。binder.Name 属性提供针对其执行动态操作的成员的名称。例如，对于 Console.WriteLine(sampleObject.SampleProperty) 语句（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Name 将返回“SampleProperty”。binder.IgnoreCase 属性指定成员名称是否区分大小写。</param><param name="result">获取操作的结果。例如，如果为某个属性调用该方法，则可以为 <paramref name="result"/> 指派该属性值。</param>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.UI.Zones.ZoneHolding.Zones">
+            <summary>
+            区域。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.UI.Zones.Zones">
+            <remarks>
+            InterfaceProxyBehavior()
+            ZonesBehavior(_zoneFactory, self, _layoutShape) => 如果有成员访问则创建ZoneOnDemand
+            </remarks>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.Zones.#ctor(System.Func{System.Object},System.Object)">
+            <summary>
+            初始化一个新的区域。
+            </summary>
+            <param name="zoneFactory">区域工厂。</param>
+            <param name="parent">父级区域。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.Zones.TryGetMemberImpl(System.String,System.Object@)">
+            <summary>
+            尝试获取成员值。
+            </summary>
+            <param name="name">成员名称。</param>
+            <param name="result">成员值。</param>
+            <returns>如果成功返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.Zones.TryGetIndex(System.Dynamic.GetIndexBinder,System.Object[],System.Object@)">
+            <summary>
+            为按索引获取值的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为索引操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发运行时异常。）
+            </returns>
+            <param name="binder">提供有关该操作的信息。</param><param name="indexes">该操作中使用的索引。例如，对于 C# 中的 sampleObject[3] 操作（Visual Basic 中为 sampleObject(3)）（其中 sampleObject 派生自 DynamicObject 类），<paramref name="indexes[0]"/> 等于 3。</param><param name="result">索引操作的结果。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+            <summary>
+            为调用成员的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为诸如调用方法这样的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关动态操作的信息。binder.Name 属性提供针对其执行动态操作的成员的名称。例如，对于语句 sampleObject.SampleMethod(100)（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Name 将返回“SampleMethod”。binder.IgnoreCase 属性指定成员名称是否区分大小写。</param><param name="args">调用操作期间传递给对象成员的参数。例如，对于语句 sampleObject.SampleMethod(100)（其中 sampleObject 派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类），<paramref name="args[0]"/> 等于 100。</param><param name="result">成员调用的结果。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.TryConvert(System.Dynamic.ConvertBinder,System.Object@)">
+            <summary>
+            提供类型转换运算的实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为将某个对象从一种类型转换为另一种类型的运算指定动态行为。
+            </summary>
+            <returns>
+            如果此运算成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关转换运算的信息。binder.Type 属性提供必须将对象转换为的类型。例如，对于 C# 中的语句 (String)sampleObject（Visual Basic 中为 CType(sampleObject, Type)）（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Type 将返回 <see cref="T:System.String"/> 类型。binder.Explicit 属性提供有关所发生转换的类型的信息。对于显式转换，它返回 true；对于隐式转换，它返回 false。</param><param name="result">类型转换运算的结果。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.Add(System.Object,System.String)">
+            <summary>
+            添加一个形状。
+            </summary>
+            <param name="item">形状项。</param>
+            <param name="position">位置。</param>
+            <returns>形状根。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            为获取成员值的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为诸如获取属性值这样的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发运行时异常。）
+            </returns>
+            <param name="binder">提供有关调用了动态操作的对象的信息。binder.Name 属性提供针对其执行动态操作的成员的名称。例如，对于 Console.WriteLine(sampleObject.SampleProperty) 语句（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Name 将返回“SampleProperty”。binder.IgnoreCase 属性指定成员名称是否区分大小写。</param><param name="result">获取操作的结果。例如，如果为某个属性调用该方法，则可以为 <paramref name="result"/> 指派该属性值。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.TryGetIndex(System.Dynamic.GetIndexBinder,System.Object[],System.Object@)">
+            <summary>
+            为按索引获取值的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为索引操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发运行时异常。）
+            </returns>
+            <param name="binder">提供有关该操作的信息。</param><param name="indexes">该操作中使用的索引。例如，对于 C# 中的 sampleObject[3] 操作（Visual Basic 中为 sampleObject(3)）（其中 sampleObject 派生自 DynamicObject 类），<paramref name="indexes[0]"/> 等于 3。</param><param name="result">索引操作的结果。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.Equals(System.Object)">
+            <summary>
+            确定指定的 <see cref="T:System.Object"/> 是否等于当前的 <see cref="T:System.Object"/>。
+            </summary>
+            <returns>
+            如果指定的 <see cref="T:System.Object"/> 等于当前的 <see cref="T:System.Object"/>，则为 true；否则为 false。
+            </returns>
+            <param name="obj">与当前的 <see cref="T:System.Object"/> 进行比较的 <see cref="T:System.Object"/>。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.GetHashCode">
+            <summary>
+            用作特定类型的哈希函数。
+            </summary>
+            <returns>
+            当前 <see cref="T:System.Object"/> 的哈希代码。
+            </returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.ToString">
+            <summary>
+            返回表示当前 <see cref="T:System.Object"/> 的 <see cref="T:System.String"/>。
+            </summary>
+            <returns>
+            <see cref="T:System.String"/>，表示当前的 <see cref="T:System.Object"/>。
+            </returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.op_Equality(Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand,System.Object)">
+            <summary>
+            <paramref name="a"/> 与 <paramref name="b"/> 是否相等。
+            </summary>
+            <param name="a">对象1.</param>
+            <param name="b">对象2.</param>
+            <returns>如果相等则返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand.op_Inequality(Rabbit.Web.Mvc.UI.Zones.ZoneOnDemand,System.Object)">
+            <summary>
+            <paramref name="a"/> 与 <paramref name="b"/> 是否不相等。
+            </summary>
+            <param name="a">对象1.</param>
+            <param name="b">对象2.</param>
+            <returns>如果不相等则返回true，否则返回false。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Utility.Extensions.DefaultExtensionTypes">
+            <summary>
+            默认扩展类型。
+            </summary>
+        </member>
+        <member name="F:Rabbit.Web.Mvc.Utility.Extensions.DefaultExtensionTypes.Theme">
+            <summary>
+            主题扩展类型。
+            </summary>
+        </member>
+        <member name="F:Rabbit.Web.Mvc.Utility.Extensions.DefaultExtensionTypes.Module">
+            <summary>
+            模块扩展类型。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Utility.Extensions.DefaultExtensionTypes.IsTheme(System.String)">
+            <summary>
+            是否是一个主题。
+            </summary>
+            <param name="type">扩展类型。</param>
+            <returns>如果是返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Utility.Extensions.DefaultExtensionTypes.IsModule(System.String)">
+            <summary>
+            是否是一个模块。
+            </summary>
+            <param name="type">扩展类型。</param>
+            <returns>如果是返回true，否则返回false。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.INamedEnumerable`1">
+            <summary>
+            一个抽象的命名枚举。
+            </summary>
+            <typeparam name="T">类型。</typeparam>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.INamedEnumerable`1.Positional">
+            <summary>
+            阵地。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.INamedEnumerable`1.Named">
+            <summary>
+            命名。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.IShapeTableManager">
+            <summary>
+            一个抽象的形状表格管理者。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.IShapeTableManager.GetShapeTable(System.String)">
+            <summary>
+            获取形状表格。
+            </summary>
+            <param name="themeName">主题名称。</param>
+            <returns>形状表格。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.DefaultShapeTableManager.HasDependency(Rabbit.Kernel.Extensions.Models.FeatureDescriptor,Rabbit.Kernel.Extensions.Models.FeatureDescriptor)">
+            <summary>
+            如果该项目有关于这个问题的明确或隐含的依赖关系，则返回true
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.IShapeTableProvider">
+            <summary>
+            一个抽象的形状表格提供程序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.IShapeTableProvider.Discover(Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTableBuilder)">
+            <summary>
+            发现形状表格。
+            </summary>
+            <param name="builder">形状表格建造者。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.IShapeTableEventHandler">
+            <summary>
+            一个抽象的形状表格事件处理程序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.IShapeTableEventHandler.ShapeTableCreated(Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTable)">
+            <summary>
+            形状表格被创建时执行。
+            </summary>
+            <param name="shapeTable">形状表格。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo">
+            <summary>
+            放置信息。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.#ctor">
+            <summary>
+            初始化一个新的放置信息。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.GetZone">
+            <summary>
+            获取区域。
+            </summary>
+            <returns>区域。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.GetPosition">
+            <summary>
+            获取位置。
+            </summary>
+            <returns>位置。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.IsLayoutZone">
+            <summary>
+            是否是布局区域。
+            </summary>
+            <returns>如果是返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.GetTab">
+            <summary>
+            获取标签。
+            </summary>
+            <returns>标签。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.GetGroup">
+            <summary>
+            获取组。
+            </summary>
+            <returns>组。</returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.Location">
+            <summary>
+            位置。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.Source">
+            <summary>
+            源。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.ShapeType">
+            <summary>
+            形状类型，
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.Alternates">
+            <summary>
+            候补形状。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo.Wrappers">
+            <summary>
+            包装。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlteration">
+            <summary>
+            形状候补。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlteration.#ctor(System.String,Rabbit.Kernel.Extensions.Models.Feature,System.Collections.Generic.IList{System.Action{Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor}})">
+            <summary>
+            初始化一个新的形状候补。
+            </summary>
+            <param name="shapeType">形状类型。</param>
+            <param name="feature">特性。</param>
+            <param name="configurations">配置委托。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlteration.Alter(Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor)">
+            <summary>
+            应用。
+            </summary>
+            <param name="descriptor">形状描述符。</param>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlteration.ShapeType">
+            <summary>
+            形状类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlteration.Feature">
+            <summary>
+            特性。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder">
+            <summary>
+            形状候补建造者。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.#ctor(Rabbit.Kernel.Extensions.Models.Feature,System.String)">
+            <summary>
+            初始化一个新的形状候补建造者。
+            </summary>
+            <param name="feature">特性。</param>
+            <param name="shapeType">形状类型。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.From(Rabbit.Kernel.Extensions.Models.Feature)">
+            <summary>
+            来自哪一个特性。
+            </summary>
+            <param name="feature">特性。</param>
+            <returns>形状候补建造者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.Configure(System.Action{Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor})">
+            <summary>
+            配置。
+            </summary>
+            <param name="action">配置委托。</param>
+            <returns>形状候补建造者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.BoundAs(System.String,System.Func{Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor,System.Func{Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayContext,System.Web.IHtmlString}})">
+            <summary>
+            绑定配置。
+            </summary>
+            <param name="bindingSource">绑定源。</param>
+            <param name="binder">绑定委托。</param>
+            <returns>形状候补建造者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnCreating(System.Action{Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatingContext})">
+            <summary>
+            创建前执行。
+            </summary>
+            <param name="action">委托。</param>
+            <returns>形状候补建造者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnCreated(System.Action{Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatedContext})">
+            <summary>
+            创建后执行。
+            </summary>
+            <param name="action">委托。</param>
+            <returns>形状候补建造者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnDisplaying(System.Action{Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayingContext})">
+            <summary>
+            显示前执行。
+            </summary>
+            <param name="action">委托。</param>
+            <returns>形状候补建造者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnDisplayed(System.Action{Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayedContext})">
+            <summary>
+            显示后执行。
+            </summary>
+            <param name="action">委托。</param>
+            <returns>形状候补建造者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.Placement(System.Func{Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementContext,Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo})">
+            <summary>
+            放置。
+            </summary>
+            <param name="action">委托。</param>
+            <returns>形状候补建造者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.Placement(System.Func{Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementContext,System.Boolean},Rabbit.Web.Mvc.DisplayManagement.Descriptors.PlacementInfo)">
+            <summary>
+            放置。
+            </summary>
+            <param name="predicate">筛选器。</param>
+            <param name="location">位置。</param>
+            <returns>形状候补建造者。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeAlterationBuilder.Build">
+            <summary>
+            生成。
+            </summary>
+            <returns>形状候补。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementContext">
+            <summary>
+            形状放置上下文。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementContext.ContentType">
+            <summary>
+            上下文类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementContext.Stereotype">
+            <summary>
+            类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementContext.DisplayType">
+            <summary>
+            显示类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementContext.Differentiator">
+            <summary>
+            微分。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementContext.Path">
+            <summary>
+            路径。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementContext.Source">
+            <summary>
+            源。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor">
+            <summary>
+            形状描述符。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.#ctor">
+            <summary>
+            初始化一个新的形状描述符。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.ShapeType">
+            <summary>
+            形状类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.BindingSource">
+            <summary>
+            绑定源。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.Binding">
+            <summary>
+            绑定委托。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.Bindings">
+            <summary>
+            绑定字典表。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.Creating">
+            <summary>
+            创建前委托集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.Created">
+            <summary>
+            创建完成委托集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.Displaying">
+            <summary>
+            显示前委托集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.Displayed">
+            <summary>
+            显示完成委托集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.Placement">
+            <summary>
+            放置委托。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.DefaultPlacement">
+            <summary>
+            默认放置。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.Wrappers">
+            <summary>
+            包装集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeDescriptor.BindingSources">
+            <summary>
+            绑定源集合。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeBinding">
+            <summary>
+            形状绑定信息。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeBinding.ShapeDescriptor">
+            <summary>
+            形状描述符。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeBinding.BindingName">
+            <summary>
+            绑定名称。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeBinding.BindingSource">
+            <summary>
+            绑定源。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeBinding.Binding">
+            <summary>
+            绑定委托。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapePlacementStrategy.ShapePlacementParsingStrategy">
+            <summary>
+            此组件发现并宣布由Placement.info文件的内容所隐含的形状改变
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTable">
+            <summary>
+            形状表格。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTable.Descriptors">
+            <summary>
+            描述符字典表。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTable.Bindings">
+            <summary>
+            绑定字典表。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTableBuilder">
+            <summary>
+            形状表格建造器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTableBuilder.#ctor(Rabbit.Kernel.Extensions.Models.Feature)">
+            <summary>
+            初始化一个新的形状表格建造器。
+            </summary>
+            <param name="feature">特性。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTableBuilder.Describe(System.String)">
+            <summary>
+            发现。
+            </summary>
+            <param name="shapeType">形状类型。</param>
+            <returns>形状候补建造器。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTableBuilder.BuildAlterations">
+            <summary>
+            生成候补形状。
+            </summary>
+            <returns>形状候补集合。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.IShapeTemplateHarvester">
+            <summary>
+            一个抽象的星座模板收集者。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.IShapeTemplateHarvester.SubPaths">
+            <summary>
+            子路径。
+            </summary>
+            <returns>路径集合。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.IShapeTemplateHarvester.HarvestShape(Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.HarvestShapeInfo)">
+            <summary>
+            收集形状。
+            </summary>
+            <param name="info">收集形状信息。</param>
+            <returns>收集形状。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.HarvestShapeInfo">
+            <summary>
+            收集形状信息。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.HarvestShapeInfo.SubPath">
+            <summary>
+            子路径。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.HarvestShapeInfo.FileName">
+            <summary>
+            文件名称。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.HarvestShapeInfo.TemplateVirtualPath">
+            <summary>
+            模板虚拟路径。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.HarvestShapeHit">
+            <summary>
+            收集形状。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.HarvestShapeHit.ShapeType">
+            <summary>
+            形状类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.HarvestShapeHit.DisplayType">
+            <summary>
+            显示类型。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.IShapeTemplateViewEngine">
+            <summary>
+            一个抽象的星座模板视图引擎。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Descriptors.ShapeTemplateStrategy.IShapeTemplateViewEngine.DetectTemplateFileNames(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            检测模板文件名称。
+            </summary>
+            <param name="fileNames">文件名称集合。</param>
+            <returns>文件名称集合。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.IDisplayHelperFactory">
+            <summary>
+            一个抽象的显示助手工厂。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.IDisplayHelperFactory.CreateHelper(System.Web.Mvc.ViewContext,System.Web.Mvc.IViewDataContainer)">
+            <summary>
+            创建助手。
+            </summary>
+            <param name="viewContext">视图上下文。</param>
+            <param name="viewDataContainer">视图数据容器。</param>
+            <returns>显示助手。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.IDisplayManager">
+            <summary>
+            一个抽象的显示管理者。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.IDisplayManager.Execute(Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayContext)">
+            <summary>
+            执行。
+            </summary>
+            <param name="context">显示上下文。</param>
+            <returns>Html字符串实例。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.IShapeFactory">
+            <summary>
+            一个抽象的形状工厂。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.IShapeFactory.Create(System.String)">
+            <summary>
+            创建形状。
+            </summary>
+            <param name="shapeType">形状类型。</param>
+            <returns>形状实例。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.IShapeFactory.Create(System.String,Rabbit.Web.Mvc.DisplayManagement.INamedEnumerable{System.Object})">
+            <summary>
+            创建形状。
+            </summary>
+            <param name="shapeType">形状类型。</param>
+            <param name="parameters">参数。</param>
+            <returns>形状实例。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.IShapeFactory.Create(System.String,Rabbit.Web.Mvc.DisplayManagement.INamedEnumerable{System.Object},System.Func{System.Object})">
+            <summary>
+            创建形状。
+            </summary>
+            <param name="shapeType">形状类型。</param>
+            <param name="parameters">参数。</param>
+            <param name="createShape">创建形状委托。</param>
+            <returns>形状实例。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayContext">
+            <summary>
+            显示上下文。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayContext.Display">
+            <summary>
+            显示助手。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayContext.ViewContext">
+            <summary>
+            视图上下文。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayContext.ViewDataContainer">
+            <summary>
+            视图数据容器。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayContext.Value">
+            <summary>
+            值。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper">
+            <summary>
+            显示助手。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper.#ctor(Rabbit.Web.Mvc.DisplayManagement.Implementation.IDisplayManager,Rabbit.Web.Mvc.DisplayManagement.IShapeFactory,System.Web.Mvc.ViewContext,System.Web.Mvc.IViewDataContainer)">
+            <summary>
+            初始化一个新的显示助手。
+            </summary>
+            <param name="displayManager">显示管理者。</param>
+            <param name="shapeFactory">形状工厂。</param>
+            <param name="viewContext">视图上下文。</param>
+            <param name="viewDataContainer">视图数据容器。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper.TryInvoke(System.Dynamic.InvokeBinder,System.Object[],System.Object@)">
+            <summary>
+            为调用对象的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为诸如调用对象或委托这样的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关调用操作的信息。</param><param name="args">调用操作期间传递给对象的参数。例如，对于 sampleObject(100) 操作（其中 sampleObject 派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类），<paramref name="args"/> 等于 100。</param><param name="result">对象调用的结果。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+            <summary>
+            为调用成员的操作提供实现。从 <see cref="T:System.Dynamic.DynamicObject"/> 类派生的类可以重写此方法，以便为诸如调用方法这样的操作指定动态行为。
+            </summary>
+            <returns>
+            如果此操作成功，则为 true；否则为 false。如果此方法返回 false，则该语言的运行时联编程序将决定行为。（大多数情况下，将引发语言特定的运行时异常。）
+            </returns>
+            <param name="binder">提供有关动态操作的信息。binder.Name 属性提供针对其执行动态操作的成员的名称。例如，对于语句 sampleObject.SampleMethod(100)（其中 sampleObject 是派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类的类的一个实例），binder.Name 将返回“SampleMethod”。binder.IgnoreCase 属性指定成员名称是否区分大小写。</param><param name="args">调用操作期间传递给对象成员的参数。例如，对于语句 sampleObject.SampleMethod(100)（其中 sampleObject 派生自 <see cref="T:System.Dynamic.DynamicObject"/> 类），<paramref name="args"/> 等于 100。</param><param name="result">成员调用的结果。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper.Invoke(System.String,Rabbit.Web.Mvc.DisplayManagement.INamedEnumerable{System.Object})">
+            <summary>
+            调用。
+            </summary>
+            <param name="name">名称。</param>
+            <param name="parameters">参数。</param>
+            <returns>结果。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper.ShapeExecute(Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape)">
+            <summary>
+            执行形状。
+            </summary>
+            <param name="shape">形状。</param>
+            <returns>结果。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper.ShapeExecute(System.Object)">
+            <summary>
+            执行形状。
+            </summary>
+            <param name="shape">形状。</param>
+            <returns>形状结果。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper.ShapeExecute(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            执行形状。
+            </summary>
+            <param name="shapes">形状集合。</param>
+            <returns>结果集合。</returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper.ViewContext">
+            <summary>
+            视图上下文。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.DisplayHelper.ViewDataContainer">
+            <summary>
+            视图数据容器。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.IShapeDisplayEvents">
+            <summary>
+            一个抽象的形状显示事件。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.IShapeDisplayEvents.Displaying(Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayingContext)">
+            <summary>
+            显示前执行。
+            </summary>
+            <param name="context">形状显示前上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.IShapeDisplayEvents.Displayed(Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayedContext)">
+            <summary>
+            显示完成后执行。
+            </summary>
+            <param name="context">形状显示后上下文。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayingContext">
+            <summary>
+            形状显示前上下文。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayingContext.Shape">
+            <summary>
+            形状。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayingContext.ShapeMetadata">
+            <summary>
+            形状元数据。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayingContext.ChildContent">
+            <summary>
+            子级内容。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayedContext">
+            <summary>
+            形状显示后上下文。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayedContext.Shape">
+            <summary>
+            形状。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayedContext.ShapeMetadata">
+            <summary>
+            形状元数据。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayedContext.ChildContent">
+            <summary>
+            子级内容。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayEvents">
+            <summary>
+            形状显示事件抽象。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayEvents.Displaying(Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayingContext)">
+            <summary>
+            显示前执行。
+            </summary>
+            <param name="context">形状显示前上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayEvents.Displayed(Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayedContext)">
+            <summary>
+            显示完成后执行。
+            </summary>
+            <param name="context">形状显示后上下文。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.IShapeFactoryEvents">
+            <summary>
+            形状工厂事件。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.IShapeFactoryEvents.Creating(Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatingContext)">
+            <summary>
+            创建前执行。
+            </summary>
+            <param name="context">形状创建前上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.IShapeFactoryEvents.Created(Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatedContext)">
+            <summary>
+            创建完成后执行。
+            </summary>
+            <param name="context">形状创建完成上下文。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatingContext">
+            <summary>
+            形状创建前上下文。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatingContext.ShapeFactory">
+            <summary>
+            形状工厂。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatingContext.New">
+            <summary>
+            形状工厂。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatingContext.ShapeType">
+            <summary>
+            形状类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatingContext.Create">
+            <summary>
+            创建委托。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatingContext.OnCreated">
+            <summary>
+            创建完成之后执行。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatedContext">
+            <summary>
+            形状创建完成上下文。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatedContext.ShapeFactory">
+            <summary>
+            形状工厂。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatedContext.New">
+            <summary>
+            形状工厂。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatedContext.ShapeType">
+            <summary>
+            形状类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatedContext.Shape">
+            <summary>
+            形状。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeFactoryEvents">
+            <summary>
+            形状工厂时间抽象。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeFactoryEvents.Creating(Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatingContext)">
+            <summary>
+            创建前执行。
+            </summary>
+            <param name="context">形状创建前上下文。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeFactoryEvents.Created(Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeCreatedContext)">
+            <summary>
+            创建完成后执行。
+            </summary>
+            <param name="context">形状创建完成上下文。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.IShapeDisplay">
+            <summary>
+            一个抽象的形状显示。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.IShapeDisplay.Display(Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape)">
+            <summary>
+            显示。
+            </summary>
+            <param name="shape">形状。</param>
+            <returns>结果。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.IShapeDisplay.Display(System.Object)">
+            <summary>
+            显示。
+            </summary>
+            <param name="shape">形状。</param>
+            <returns>结果。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.IShapeDisplay.Display(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            显示。
+            </summary>
+            <param name="shapes">形状集合。</param>
+            <returns>结果集合。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.ShapeAttribute">
+            <summary>
+            形状标记。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.ShapeAttribute.#ctor">
+            <summary>
+            初始化一个新的形状标记。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.ShapeAttribute.#ctor(System.String)">
+            <summary>
+            初始化一个新的形状标记。
+            </summary>
+            <param name="shapeType">形状类型。</param>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.ShapeAttribute.ShapeType">
+            <summary>
+            形状类型。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.ShapeDisplay.Display(Rabbit.Web.Mvc.DisplayManagement.Shapes.Shape)">
+            <summary>
+                显示。
+            </summary>
+            <param name="shape">形状。</param>
+            <returns>结果。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.ShapeDisplay.Display(System.Object)">
+            <summary>
+                显示。
+            </summary>
+            <param name="shape">形状。</param>
+            <returns>结果。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.ShapeDisplay.Display(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+                显示。
+            </summary>
+            <param name="shapes">形状集合。</param>
+            <returns>结果集合。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Shapes.Nil">
+            <summary>
+            一个空的动态对象。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.Nil.Instance">
+            <summary>
+            实例。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Shapes.RabbitTagBuilder">
+            <summary>
+            标签建造器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.RabbitTagBuilder.#ctor(System.String)">
+            <summary>
+            初始化一个新的标签建造器。
+            </summary>
+            <param name="tagName">标签名称。</param>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.RabbitTagBuilder.StartElement">
+            <summary>
+            起始元素。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.RabbitTagBuilder.EndElement">
+            <summary>
+            结束元素。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata">
+            <summary>
+            形状元数据。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.#ctor">
+            <summary>
+            初始化一个新的形状元数据。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.OnDisplaying(System.Action{Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayingContext})">
+            <summary>
+            在显示前时执行委托。
+            </summary>
+            <param name="action">委托。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.OnDisplayed(System.Action{Rabbit.Web.Mvc.DisplayManagement.Implementation.ShapeDisplayedContext})">
+            <summary>
+            在显示完成后执行委托。
+            </summary>
+            <param name="action">委托。</param>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.Type">
+            <summary>
+            类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.DisplayType">
+            <summary>
+            显示类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.Position">
+            <summary>
+            位置。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.PlacementSource">
+            <summary>
+            放置源。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.Prefix">
+            <summary>
+            前缀。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.Wrappers">
+            <summary>
+            包装。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.Alternates">
+            <summary>
+            候补。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.WasExecuted">
+            <summary>
+            是否有执行完成。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.ChildContent">
+            <summary>
+            子内容。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.Displaying">
+            <summary>
+            显示前委托集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.Displayed">
+            <summary>
+            显示后委托集合。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.DisplayManagement.Shapes.ShapeMetadata.BindingSources">
+            <summary>
+            绑定源。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Environment.Extensions.ShellBlueprintExtensions">
+            <summary>
+            外壳蓝图扩展方法。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.IViewPage">
+            <summary>
+            一个抽象的视图页。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.IViewPage.DisplayChildren(System.Object)">
+            <summary>
+            显示子级内容。
+            </summary>
+            <param name="shape">形状。</param>
+            <returns>Html字符串。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.IViewPage.Capture(System.Action{System.Web.IHtmlString})">
+            <summary>
+            捕获。
+            </summary>
+            <param name="callback">委托。</param>
+            <returns>可释放的对象。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.IViewPage.HasText(System.Object)">
+            <summary>
+            是否存在文本。
+            </summary>
+            <param name="thing">对象。</param>
+            <returns>如果是则返回true，否则返回false。</returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.IViewPage.T">
+            <summary>
+            本地化委托。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.IViewPage.Display">
+            <summary>
+            显示形状。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.IViewPage.Layout">
+            <summary>
+            布局页。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.IViewPage.WorkContext">
+            <summary>
+            当前工作上下文。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.Routes.Impl.StandardExtensionRouteProvider.GetRoutes(System.Collections.Generic.ICollection{Rabbit.Web.Routes.RouteDescriptor})">
+            <summary>
+            获取路由信息。
+            </summary>
+            <param name="routes">路由集合。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.Spooling.HtmlStringWriter">
+            <summary>
+            Html字符串写入器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.Spooling.HtmlStringWriter.#ctor">
+            <summary>
+            初始化一个新的Html字符串写入器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.Spooling.HtmlStringWriter.Write(System.String)">
+            <summary>
+            将字符串写入文本流。
+            </summary>
+            <param name="value">要写入的字符串。</param><exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter"/> is closed.</exception><exception cref="T:System.IO.IOException">发生 I/O 错误。</exception>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.Spooling.HtmlStringWriter.Write(System.Char)">
+            <summary>
+            将字符写入文本流。
+            </summary>
+            <param name="value">要写入文本流中的字符。</param><exception cref="T:System.ObjectDisposedException"><see cref="T:System.IO.TextWriter"/> 是关闭的。</exception><exception cref="T:System.IO.IOException">发生 I/O 错误。</exception>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.Spooling.HtmlStringWriter.ToString">
+            <summary>
+            返回表示当前 <see cref="T:System.Object"/> 的 <see cref="T:System.String"/>。
+            </summary>
+            <returns>
+            <see cref="T:System.String"/>，表示当前的 <see cref="T:System.Object"/>。
+            </returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.Spooling.HtmlStringWriter.ToHtmlString">
+            <summary>
+            返回 HTML 编码的字符串。
+            </summary>
+            <returns>
+            HTML 编码的字符串。
+            </returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.Spooling.HtmlStringWriter.Encoding">
+            <summary>
+            当在派生类中重写时，返回用来写输出的 <see cref="T:System.Text.Encoding"/>。
+            </summary>
+            <returns>
+            用来写入输出的 Encoding。
+            </returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.ViewEngines.IViewEngineProvider">
+            <summary>
+            一个抽象的视图引擎提供程序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.IViewEngineProvider.CreateThemeViewEngine(Rabbit.Web.Mvc.Mvc.ViewEngines.CreateThemeViewEngineParams)">
+            <summary>
+            创建主题视图引擎。
+            </summary>
+            <param name="parameters">创建主题视图引擎所需的参数。</param>
+            <returns>视图引擎。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.IViewEngineProvider.CreateModulesViewEngine(Rabbit.Web.Mvc.Mvc.ViewEngines.CreateModulesViewEngineParams)">
+            <summary>
+            创建模块视图引擎。
+            </summary>
+            <param name="parameters">创建模块视图引擎所需的参数。</param>
+            <returns>视图引擎。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.IViewEngineProvider.CreateBareViewEngine">
+            <summary>
+            创建一个基本的视图引擎。
+            </summary>
+            <returns>视图引擎。</returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.RazorCompilationEventsShim.HostContainer">
+            <summary>
+            主机容器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.RazorViewEngineProvider.CreateThemeViewEngine(Rabbit.Web.Mvc.Mvc.ViewEngines.CreateThemeViewEngineParams)">
+            <summary>
+            创建主题视图引擎。
+            </summary>
+            <param name="parameters">创建主题视图引擎所需的参数。</param>
+            <returns>视图引擎。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.RazorViewEngineProvider.CreateModulesViewEngine(Rabbit.Web.Mvc.Mvc.ViewEngines.CreateModulesViewEngineParams)">
+            <summary>
+            创建模块视图引擎。
+            </summary>
+            <param name="parameters">创建模块视图引擎所需的参数。</param>
+            <returns>视图引擎。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.RazorViewEngineProvider.CreateBareViewEngine">
+            <summary>
+            创建一个基本的视图引擎。
+            </summary>
+            <returns>视图引擎。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.RazorViewEngineProvider.DetectTemplateFileNames(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            检测模板文件名称。
+            </summary>
+            <param name="fileNames">文件名称集合。</param>
+            <returns>文件名称集合。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1">
+            <summary>
+            Web视图页抽象类。
+            </summary>
+            <typeparam name="TModel">视图模型。</typeparam>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.DisplayChildren(System.Object)">
+            <summary>
+            显示子级内容。
+            </summary>
+            <param name="shape">形状。</param>
+            <returns>Html字符串。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.Capture(System.Action{System.Web.IHtmlString})">
+            <summary>
+            捕获。
+            </summary>
+            <param name="callback">委托。</param>
+            <returns>可释放的对象。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.HasText(System.Object)">
+            <summary>
+            是否存在文本。
+            </summary>
+            <param name="thing">对象。</param>
+            <returns>如果是则返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.InitHelpers">
+            <summary>
+            初始化 <see cref="T:System.Web.Mvc.AjaxHelper"/>、<see cref="T:System.Web.Mvc.HtmlHelper"/> 和 <see cref="T:System.Web.Mvc.UrlHelper"/> 类。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.Href(System.String,System.Object[])">
+            <summary>
+            Builds an absolute URL from an application-relative URL by using the specified parameters.
+            </summary>
+            <returns>
+            The absolute URL.
+            </returns>
+            <param name="path">The initial path to use in the URL.</param><param name="pathParts">Additional path information, such as folders and subfolders.</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.Tag(System.Object,System.String)">
+            <summary>
+            标签建造者。
+            </summary>
+            <param name="shape">形状。</param>
+            <param name="tagName">标签名称。</param>
+            <returns>标签建造者。</returns>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.New">
+            <summary>
+            形状工厂。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.DisplayHelperFactory">
+            <summary>
+            显示助手工厂。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.ShapeFactory">
+            <summary>
+            形状工厂。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.T">
+            <summary>
+            本地化委托。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.Display">
+            <summary>
+            显示形状。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.Layout">
+            <summary>
+            布局页。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage`1.WorkContext">
+            <summary>
+            当前工作上下文。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Mvc.ViewEngines.Razor.WebViewPage">
+            <summary>
+            Web视图页抽象类。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.ThemeViewLocationCache.GetViewLocation(System.Web.HttpContextBase,System.String)">
+            <summary>
+            Gets the view location by using the specified HTTP context and the cache key.
+            </summary>
+            <returns>
+            The view location.
+            </returns>
+            <param name="httpContext">The HTTP context.</param><param name="key">The cache key.</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Mvc.ViewEngines.ThemeAwareness.ThemeViewLocationCache.InsertViewLocation(System.Web.HttpContextBase,System.String,System.String)">
+            <summary>
+            Inserts the specified view location into the cache by using the specified HTTP context and the cache key.
+            </summary>
+            <param name="httpContext">The HTTP context.</param><param name="key">The cache key.</param><param name="virtualPath">The virtual path.</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.AutofacWebApiDependencyResolver.Dispose">
+            <summary>
+            执行与释放或重置非托管资源相关的应用程序定义的任务。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.AutofacWebApiDependencyResolver.GetService(System.Type)">
+            <summary>
+            从范围中检索服务。
+            </summary>
+            <returns>
+            检索到的服务。
+            </returns>
+            <param name="serviceType">要检索的服务。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.AutofacWebApiDependencyResolver.GetServices(System.Type)">
+            <summary>
+            从范围中检索服务集合。
+            </summary>
+            <returns>
+            检索到的服务集合。
+            </returns>
+            <param name="serviceType">要检索的服务集合。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.AutofacWebApiDependencyResolver.BeginScope">
+            <summary>
+            开始解析范围。
+            </summary>
+            <returns>
+            依赖范围。
+            </returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.AutofacWebApiDependencyScope.Dispose">
+            <summary>
+            执行与释放或重置非托管资源相关的应用程序定义的任务。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.AutofacWebApiDependencyScope.GetService(System.Type)">
+            <summary>
+            从范围中检索服务。
+            </summary>
+            <returns>
+            检索到的服务。
+            </returns>
+            <param name="serviceType">要检索的服务。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.AutofacWebApiDependencyScope.GetServices(System.Type)">
+            <summary>
+            从范围中检索服务集合。
+            </summary>
+            <returns>
+            检索到的服务集合。
+            </returns>
+            <param name="serviceType">要检索的服务集合。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.DefaultWebApiHttpControllerSelector.SelectController(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            为给定 <see cref="T:System.Net.Http.HttpRequestMessage"/> 选择 <see cref="T:System.Web.Http.Controllers.HttpControllerDescriptor"/>。
+            </summary>
+            <returns>
+            给定 <see cref="T:System.Net.Http.HttpRequestMessage"/> 的 <see cref="T:System.Web.Http.Controllers.HttpControllerDescriptor"/> 实例。
+            </returns>
+            <param name="request">HTTP 请求消息。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.DefaultWebApiHttpHttpControllerActivator.Create(System.Net.Http.HttpRequestMessage,System.Web.Http.Controllers.HttpControllerDescriptor,System.Type)">
+            <summary>
+            创建一个 <see cref="T:System.Web.Http.Controllers.IHttpController"/> 对象。
+            </summary>
+            <returns>
+            <see cref="T:System.Web.Http.Controllers.IHttpController"/> 对象。
+            </returns>
+            <param name="request">消息请求。</param><param name="controllerDescriptor">HTTP 控制器描述符。</param><param name="controllerType">控制器的类型。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.WebApi.Extensions.RouteExtension">
+            <summary>
+            路由扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.Extensions.RouteExtension.GetAreaName(System.Web.Http.Routing.IHttpRoute)">
+            <summary>
+            获取区域名称。
+            </summary>
+            <param name="route">路由信息。</param>
+            <returns>区域名称。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.Extensions.RouteExtension.GetAreaName(System.Web.Http.Routing.IHttpRouteData)">
+            <summary>
+            获取区域名称。
+            </summary>
+            <param name="routeData">路由数据。</param>
+            <returns>区域名称。</returns>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.WebApi.Routes.IHttpRouteProvider">
+            <summary>
+            一个抽象的WebApi路由器提供程序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.Routes.IHttpRouteProvider.GetRoutes(System.Collections.Generic.ICollection{Rabbit.Web.Routes.RouteDescriptor})">
+            <summary>
+            获取路由信息。
+            </summary>
+            <param name="routes">路由集合。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Utility.Extensions.WorkContextExtensions">
+            <summary>
+            工作上下文扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Utility.Extensions.WorkContextExtensions.GetLayout(Rabbit.Kernel.Works.WorkContext)">
+            <summary>
+            获取布局。
+            </summary>
+            <param name="workContext">工作上下文。</param>
+            <returns>布局对象。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Utility.Extensions.WorkContextExtensions.GetWorkContext(System.Web.Mvc.ControllerContext)">
+            <summary>
+            获取工作上下文。
+            </summary>
+            <param name="controllerContext">控制器上下文。</param>
+            <returns>工作上下文。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.Routes.WebApiRoutePublisherEventHandler.Publishing(System.Collections.Generic.IEnumerable{Rabbit.Web.Routes.RouteDescriptor})">
+            <summary>
+            发布前。
+            </summary>
+            <param name="routeDescriptors">路由描述符。</param>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.WebApi.Routes.WebApiRoutePublisherEventHandler.Published(System.Collections.Generic.IEnumerable{Rabbit.Web.Routes.RouteDescriptor})">
+            <summary>
+            发布后。
+            </summary>
+            <param name="routeDescriptors">路由描述符。</param>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Works.MvcWorkContext">
+            <summary>
+            Web工作上下文。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Works.MvcWorkContext.#ctor(Rabbit.Kernel.Works.WorkContext)">
+            <summary>
+            初始化一个新的Web工作上下文。
+            </summary>
+            <param name="workContext">工作上下文。</param>
+        </member>
+        <member name="P:Rabbit.Web.Mvc.Works.MvcWorkContext.Layout">
+            <summary>
+            对应的工作范围内的布局形状。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Web.Mvc.Works.WorkContextExtensions">
+            <summary>
+            工作上下文扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Works.WorkContextExtensions.GetWorkContext(Rabbit.Web.Works.IWebWorkContextAccessor,System.Web.Mvc.ControllerContext)">
+            <summary>
+            获取工作上下文。
+            </summary>
+            <param name="workContextAccessor">工作上下文访问器。</param>
+            <param name="controllerContext">控制器上下文。</param>
+            <returns>工作上下文。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Works.WorkContextExtensions.AsMvcWorkContext(Rabbit.Kernel.Works.WorkContext)">
+            <summary>
+            将工作上下文转换为Mvc工作上下文。
+            </summary>
+            <param name="workContext">工作上下文。</param>
+            <returns>Mvc工作上下文。</returns>
+        </member>
+        <member name="M:Rabbit.Web.Mvc.Works.WorkContextExtensions.GetWorkContext(System.Web.Http.Controllers.HttpControllerContext)">
+            <summary>
+            获取工作上下文。
+            </summary>
+            <param name="controllerContext">控制器上下文。</param>
+            <returns>工作上下文。</returns>
+        </member>
+    </members>
+</doc>

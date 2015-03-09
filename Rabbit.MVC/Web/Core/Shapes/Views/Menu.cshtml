@@ -1,0 +1,11 @@
+﻿@{
+    //模型是Model.Menu来自布局（Layout.Menu）
+    var tag = Tag(Model, "ul");
+}
+<nav>
+    @tag.StartElement
+    @* 显示菜单项形状模板 *@
+    @DisplayChildren(Model)
+    @tag.EndElement
+</nav>
+<script src="~/Themes/TheAdmin/Scripts/nav.js"></script>

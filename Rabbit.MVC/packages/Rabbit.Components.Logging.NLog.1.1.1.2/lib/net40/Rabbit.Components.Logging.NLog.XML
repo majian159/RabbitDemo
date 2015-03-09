@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rabbit.Components.Logging.NLog</name>
+    </assembly>
+    <members>
+        <member name="T:Rabbit.Components.Logging.NLog.LoggingBuilderExtensions">
+            <summary>
+                日志建设者扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.LoggingBuilderExtensions.UseNLog(Rabbit.Kernel.Logging.BuilderExtensions.ILoggingBuilder)">
+            <summary>
+                使用NLog。
+            </summary>
+            <param name="loggingBuilder">日志建设者。</param>
+        </member>
+        <member name="T:Rabbit.Components.Logging.NLog.ILoggerFactory">
+            <summary>
+            一个抽象的日志记录器工厂。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.ILoggerFactory.CreateLogger(System.Type)">
+            <summary>
+            创建日志记录器。
+            </summary>
+            <param name="type">类型。</param>
+            <returns>日志记录器实例。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.LoggerFactory.CreateLogger(System.Type)">
+            <summary>
+            创建日志记录器。
+            </summary>
+            <param name="type">类型。</param>
+            <returns>日志记录器实例。</returns>
+        </member>
+        <member name="T:Rabbit.Components.Logging.NLog.ILoggingConfigurationResolve">
+            <summary>
+            日志配置文件解析接口。
+            <remarks>全局单例。</remarks>
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.ILoggingConfigurationResolve.GetLoggingConfiguration(System.Reflection.Assembly)">
+            <summary>
+            根据程序集获取日志记录器配置信息。
+            </summary>
+            <param name="assembly">程序集。</param>
+            <returns>日志配置。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.LoggingConfigurationResolve.GetLoggingConfiguration(System.Reflection.Assembly)">
+            <summary>
+            根据程序集获取日志记录器配置信息。
+            </summary>
+            <param name="assembly">程序集。</param>
+            <returns>日志配置。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.LoggingConfigurationResolve.GetLoggingConfigurationStream(System.Reflection.Assembly)">
+            <summary>
+            根据程序集获取日志记录器配置文件流。
+            </summary>
+            <param name="assembly">程序集。</param>
+            <returns>文件流。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.LoggingConfigurationResolve.CombineRules(System.Reflection.Assembly,System.Xml.Linq.XContainer)">
+            <summary>
+            组合规则。
+            </summary>
+            <param name="assembly">程序集。</param>
+            <param name="container">Xml配置文档。</param>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.LoggingConfigurationResolve.CombineTargets(System.Xml.Linq.XContainer)">
+            <summary>
+            组合目标。
+            </summary>
+            <param name="container">需要组合的容器。</param>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.LoggingModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Override to add registrations to the container.
+            </summary>
+            <remarks>
+            Note that the ContainerBuilder parameter is unique to this module.
+            </remarks>
+            <param name="builder">The builder through which components can be
+                        registered.</param>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.LoggingModule.AttachToComponentRegistration(Autofac.Core.IComponentRegistry,Autofac.Core.IComponentRegistration)">
+            <summary>
+            Override to attach module-specific functionality to a
+                        component registration.
+            </summary>
+            <remarks>
+            This method will be called for all existing <i>and future</i> component
+                        registrations - ordering is not important.
+            </remarks>
+            <param name="componentRegistry">The component registry.</param><param name="registration">The registration to attach functionality to.</param>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.MinimumShellDescriptorProvider.GetFeatures(System.Collections.Generic.ICollection{Rabbit.Kernel.Environment.Descriptor.Models.ShellFeature})">
+            <summary>
+            获取外壳描述符。
+            </summary>
+            <param name="features">外壳特性描述符。</param>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.NLogLogger.IsEnabled(Rabbit.Kernel.Logging.LogLevel)">
+            <summary>
+            当前日志等级是否可以记录。
+            </summary>
+            <param name="level">日志等级。</param>
+            <returns>是否可以记录。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Logging.NLog.NLogLogger.Log(Rabbit.Kernel.Logging.LogLevel,System.Exception,System.String,System.Object[])">
+            <summary>
+            记录日志。
+            </summary>
+            <param name="level">日志等级。</param>
+            <param name="exception">异常。</param>
+            <param name="format">格式。</param>
+            <param name="args">参数。</param>
+        </member>
+    </members>
+</doc>

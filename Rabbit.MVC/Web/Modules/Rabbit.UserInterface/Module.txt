@@ -1,0 +1,12 @@
+﻿Name: Rabbit.UserInterface
+Category: Default
+Description: 用户接口模块。
+FeatureDescription: 
+Version: 1.0.0.0
+KernelVersion: 1.0.0.0
+WebSite: 
+Company: 
+Author: KAnts
+Tags: 
+Dependencies: 
+Features: 

@@ -1,0 +1,46 @@
+﻿@{
+    var items = (IEnumerable<dynamic>) Enumerable.Cast<dynamic>(Model);
+}
+@{
+    if (Model.LocalNavigation)
+    {
+        if (!HasText(Model.Text))
+        {
+            @DisplayChildren(Model)
+        }
+        else
+        {
+            if (Model.Href.TrimEnd('/').ToUpperInvariant() == Request.Path.TrimEnd('/').ToUpperInvariant())
+            {
+                Model.Classes.Add("active");
+            }
+            var tag = Tag(Model, "li");
+            @tag.StartElement
+            if (!items.Any(i => i.LocalNavigation))
+            {
+                <a href="@Model.Href">
+                    @if (!string.IsNullOrWhiteSpace(Model.Icon))
+                    {
+                        <i class="@Model.Icon"></i>
+                    }
+                    <span class="menu-text">@Model.Text</span>
+                </a>
+            }
+            else
+            {
+                <a class="dropdown-toggle" href="#">
+                    @if (!string.IsNullOrWhiteSpace(Model.Icon))
+                    {
+                        <i class="@Model.Icon"></i>
+                    }
+                    <span class="menu-text">@Model.Text</span>
+                    <b class="arrow icon-angle-down"></b>
+                </a>
+                <ul class="submenu">
+                    @DisplayChildren(Model)
+                </ul>
+            }
+            @tag.EndElement
+        }
+    }
+}

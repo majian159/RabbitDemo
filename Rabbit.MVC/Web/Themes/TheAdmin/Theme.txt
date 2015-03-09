@@ -1,0 +1,7 @@
+﻿Name: The Admin
+Author: MaJian
+Description: 管理后台。
+Version: 1.0.0.0
+KernelVersion: 1.0.0.0
+Tags: hidden
+Website: 
