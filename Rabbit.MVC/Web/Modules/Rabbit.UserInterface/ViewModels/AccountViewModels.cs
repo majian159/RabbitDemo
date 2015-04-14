@@ -14,5 +14,7 @@ namespace Rabbit.UserInterface.ViewModels
         public string Password { get; set; }
 
         public bool Remember { get; set; }
+
+        public string ReturnUrl { get; set; }
     }
 }

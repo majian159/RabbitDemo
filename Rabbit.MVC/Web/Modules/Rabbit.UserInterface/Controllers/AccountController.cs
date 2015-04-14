@@ -23,9 +23,9 @@ namespace Rabbit.UserInterface.Controllers
 
         #region Action
 
-        public ActionResult SignIn()
+        public ActionResult SignIn(string returnUrl)
         {
-            return View();
+            return View(new SignInViewModel { ReturnUrl = returnUrl });
         }
 
         [ActionName("SignIn")]
@@ -37,13 +37,15 @@ namespace Rabbit.UserInterface.Controllers
                 return View(model);
             }
             _authenticationService.SignIn(new UserModel { Identity = model.UserName, UserName = model.UserName }, model.Remember);
-            return RedirectToAction("Index", "Admin");
+            if (string.IsNullOrWhiteSpace(model.ReturnUrl))
+                return RedirectToAction("Index", "Admin");
+            return Redirect(model.ReturnUrl);
         }
 
-        public ActionResult SignOut()
+        public ActionResult SignOut(string returnUrl)
         {
             _authenticationService.SignOut();
-            return RedirectToAction("SignIn");
+            return RedirectToAction("SignIn", new { returnUrl });
         }
 
         #endregion Action

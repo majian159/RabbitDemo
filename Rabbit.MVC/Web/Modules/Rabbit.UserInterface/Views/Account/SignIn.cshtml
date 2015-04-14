@@ -67,6 +67,8 @@
                 @Html.ValidationSummary(string.Empty, new { @class = "alert alert-error hide" })
                 @using (Html.BeginForm())
                 {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.ReturnUrl)
                     <div class="form-group">
                         <label>用户名</label>
                         @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
