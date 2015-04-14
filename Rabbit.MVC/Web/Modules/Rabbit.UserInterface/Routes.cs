@@ -16,7 +16,8 @@ namespace Rabbit.UserInterface
         public void GetRoutes(ICollection<RouteDescriptor> routes)
         {
             const string area = "Rabbit.UserInterface";
-            routes.MapRabbitRoute("Admin", area, "Admin", "Index", new { id = UrlParameter.Optional });
+
+            routes.MapRabbitRoute(string.Empty, area, "Admin", "Index");
             routes.MapRabbitRoute("Admin/UserInterface/{controller}/{action}/{id}", area, "Admin", "Index", new { id = UrlParameter.Optional });
             routes.MapRabbitRoute("{controller}/{action}/{id}", area, "Home", "Index", new { id = UrlParameter.Optional });
         }
