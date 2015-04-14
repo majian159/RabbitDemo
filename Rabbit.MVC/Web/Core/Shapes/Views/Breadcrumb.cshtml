@@ -3,29 +3,15 @@
 @{
     //获取面包屑导航集合。
     IEnumerable<MenuItem> menus = Model.GetMenus(Request, Request.RequestContext.RouteData.Values);
-    MenuItem currentMenuItem = null;
-    //面包屑导航集合包含菜单元素
-    if (menus != null && menus.Any())
-    {
-        //得到当前页面的菜单项。
-        currentMenuItem = menus.LastOrDefault();
-        //从面包屑导航集合中移除当前页面的菜单项。
-        menus = menus.Take(menus.Count() - 1).ToArray();
-    }
+    //得到当前页面的菜单项。
+    var currentMenuItem = menus.LastOrDefault();
 }
 @if (menus != null && menus.Any())
 {
     <ul class="breadcrumb">
         <li>
-            <i class="icon-home home-icon"></i>
-            <a href="@Url.Action("Index", "AdminHome", new { area = "ChunSun.Mobile.Contents" })">首页</a>
+            <a href="@Url.Action("Index", "Admin", new { area = "Rabbit.UserInterface" })">首页</a>
         </li>
-        @foreach (var item in menus)
-        {
-            <li>
-                <a href="@item.Href">@item.Text</a>
-            </li>
-        }
         @if (currentMenuItem != null)
         {
             <li class="active" href="@currentMenuItem.Href">@currentMenuItem.Text</li>

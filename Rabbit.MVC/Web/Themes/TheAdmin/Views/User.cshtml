@@ -1,53 +1,11 @@
-﻿@using ChunSun.Infrastructure.Security
-@if (User.Identity.IsAuthenticated)
-{
-    var authenticationService = WorkContext.Resolve<IAuthenticationService>();
-    var user = authenticationService.GetAuthenticatedUser();
-    string userName;
-    if (user == null)
-    {
-        userName = User.Identity.Name;
-    }
-    else
-    {
-        if (user is UserModel)
-        {
-            userName = (user as UserModel).RealName;
-        }
-        else
-        {
-            userName = user.UserName;
-        }
-    }
-    <li class="light-blue">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-            <img class="nav-user-photo" src="~/Themes/TheAdmin/Content/logo2.png" alt="雨后春笋" style="width: 36px; height: 36px" />
-            <span class="user-info">
-                <small>欢迎,</small>
-                @userName
-            </span>
-            <i class="icon-caret-down"></i>
+﻿<ul id="main-menu" class="nav navbar-nav navbar-right">
+    <li class="dropdown hidden-xs">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> Jack Smith
+            <i class="fa fa-caret-down"></i>
         </a>
-        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-            @*<li>
-                    <a href="#">
-                        <i class="icon-cog"></i>
-                        @T("设置")
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="icon-user"></i>
-                        @T("个人")
-                    </a>
-                </li>
-                <li class="divider"></li>*@
-            <li>
-                <a href="@Url.RouteUrl("SingleSignOn", new { Action = "SignOut" })">
-                    <i class="icon-off"></i>
-                    @T("退出")
-                </a>
-            </li>
+        <ul class="dropdown-menu">
+            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
         </ul>
     </li>
-}
+</ul>

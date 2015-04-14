@@ -1,14 +1,18 @@
 ﻿using Rabbit.Kernel.Localization;
-using Rabbit.Kernel.Works;
+using Rabbit.Kernel.Utility.Extensions;
 using Rabbit.Web.Mvc.DisplayManagement;
 using Rabbit.Web.Mvc.DisplayManagement.Descriptors;
 using Rabbit.Web.Mvc.UI;
+using Rabbit.Web.Mvc.UI.Navigation;
 using Rabbit.Web.Mvc.UI.Zones;
+using Rabbit.Web.UI.Navigation;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Rabbit.Core.Shapes
 {
@@ -16,15 +20,17 @@ namespace Rabbit.Core.Shapes
     {
         #region Field
 
-        private readonly Work<IShapeFactory> _shapeFactory;
+        private readonly IShapeFactory _shapeFactory;
+        private readonly INavigationManager _navigationManager;
 
         #endregion Field
 
         #region Constructor
 
-        public CoreShapes(Work<IShapeFactory> shapeFactory)
+        public CoreShapes(IShapeFactory shapeFactory, INavigationManager navigationManager)
         {
             _shapeFactory = shapeFactory;
+            _navigationManager = navigationManager;
 
             T = NullLocalizer.Instance;
         }
@@ -35,7 +41,7 @@ namespace Rabbit.Core.Shapes
 
         public Localizer T { get; set; }
 
-        public dynamic New { get { return _shapeFactory.Value; } }
+        public dynamic New { get { return _shapeFactory; } }
 
         #endregion Property
 
@@ -63,6 +69,12 @@ namespace Rabbit.Core.Shapes
                     layout.Content = created.New.Zone();
                     layout.Content.ZoneName = "Content";
                     layout.Content.Add(created.New.PlaceChildContent(Source: layout));
+
+                    layout.Breadcrumb = created.New.Zone();
+                    layout.Breadcrumb.ZoneName = "Breadcrumb";
+                    layout.Breadcrumb.Add(created.New.Breadcrumb(GetMenus: new Func<HttpRequestBase, RouteValueDictionary, IEnumerable<MenuItem>>((request, routeValues) => NavigationHelper.SetSelectedPath(_navigationManager.BuildMenu("admin"), request, routeValues))));
+
+                    layout.User = created.New.User();
                 });
 
             builder.Describe("Zone")
@@ -71,11 +83,39 @@ namespace Rabbit.Core.Shapes
                 {
                     var zone = displaying.Shape;
                     string zoneName = zone.ZoneName;
-                    //                    zone.Classes.Add("zone-" + zoneName.HtmlClassify());
+                    zone.Classes.Add("zone-" + HtmlClassify(zoneName));
                     zone.Classes.Add("zone-" + zoneName);
                     zone.Classes.Add("zone");
 
                     zone.Metadata.Alternates.Add("Zone__" + zoneName);
+                });
+
+            builder.Describe("Menu")
+                .OnDisplaying(displaying =>
+                {
+                    var menu = displaying.Shape;
+                    string menuName = menu.MenuName;
+                    menu.Classes.Add("menu-" + HtmlClassify(menuName));
+                    menu.Classes.Add("menu");
+                    menu.Classes.Add("nav");
+                    menu.Classes.Add("nav-list");
+                    menu.Metadata.Alternates.Add("Menu__" + EncodeAlternateElement(menuName));
+                });
+
+            builder.Describe("MenuItem")
+                .OnDisplaying(displaying =>
+                {
+                    var menuItem = displaying.Shape;
+                    var menu = menuItem.Menu;
+                    menuItem.Metadata.Alternates.Add("MenuItem__" + EncodeAlternateElement(menu.MenuName));
+                });
+
+            builder.Describe("Breadcrumb")
+                .OnDisplaying(displaying =>
+                {
+                    var shape = displaying.Shape;
+                    var metadata = shape.Metadata;
+                    metadata.Alternates.Add("Breadcrumb");
                 });
         }
 
@@ -172,6 +212,49 @@ namespace Rabbit.Core.Shapes
             if (!string.IsNullOrWhiteSpace(id))
                 tagBuilder.GenerateId(id);
             return tagBuilder;
+        }
+
+        private static string EncodeAlternateElement(string alternateElement)
+        {
+            return alternateElement.Replace("-", "__").Replace(".", "_");
+        }
+
+        /// <summary>
+        /// Html样式类名称。
+        /// </summary>
+        /// <param name="text">字符串。</param>
+        /// <returns>处理后的字符串。</returns>
+        private static string HtmlClassify(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return string.Empty;
+
+            var friendlier = text.CamelFriendly();
+
+            var result = new char[friendlier.Length];
+
+            var cursor = 0;
+            var previousIsNotLetter = false;
+            for (var i = 0; i < friendlier.Length; i++)
+            {
+                var current = friendlier[i];
+                if (current.IsLetter() || (char.IsDigit(current) && cursor > 0))
+                {
+                    if (previousIsNotLetter && i != 0 && cursor > 0)
+                    {
+                        result[cursor++] = '-';
+                    }
+
+                    result[cursor++] = char.ToLowerInvariant(current);
+                    previousIsNotLetter = false;
+                }
+                else
+                {
+                    previousIsNotLetter = true;
+                }
+            }
+
+            return new string(result, 0, cursor);
         }
 
         #endregion Private Method

@@ -1,248 +1,107 @@
-﻿@using Rabbit.Kernel.Environment.Configuration
-@{
-    Func<dynamic, dynamic> Zone = x => Display(x);
-
+﻿@{
+    Func<dynamic, dynamic> zone = x => Display(x);
     string title = Convert.ToString(Model.Title);
-    var tenantName = Convert.ToString(WorkContext.CurrentTenant.TenantName);
 }
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
 <head>
-    <title>@string.Format("{0} - {1}", title, tenantName)</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- basic styles -->
-    <link href="~/Themes/TheAdmin/Content/Bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/themes/theadmin/content/assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="~/Themes/TheAdmin/Content/adminicon/iconfont.css" />
-    <!--[if IE 7]>
-        <link rel="stylesheet" href="~/themes/theadmin/content/assets/css/font-awesome-ie7.min.css" />
-    <![endif]-->
-    <!-- page specific plugin styles -->
-    @(Html.Raw(Zone(Model.Style)))
-    <!-- fonts -->
-    <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" /> -->
-    <!-- ace styles -->
-    <link rel="stylesheet" href="~/themes/theadmin/content/assets/css/ace.min.css" />
-    <link rel="stylesheet" href="~/themes/theadmin/content/assets/css/ace-rtl.min.css" />
-    <link rel="stylesheet" href="~/themes/theadmin/content/assets/css/ace-skins.min.css" />
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="~/assets/css/ace-ie.min.css" />
-    <![endif]-->
-    <!-- inline styles related to this page -->
-    <!-- ace settings handler -->
-    <script src="~/themes/theadmin/content/assets/js/ace-extra.min.js"></script>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="~/bundles/html5shiv"></script>
-        <script src="~/bundles/respond"></script>
-    <![endif]-->
-    <!-- basic scripts -->
-    <!--[if !IE]> -->
-    <script src="~/Themes/TheAdmin/Scripts/JQuery/jquery-2.0.3.js"></script>
-    <!-- <![endif]-->
-    <!--[if IE]>
-        <script src="~/Themes/TheAdmin/Scripts/JQuery/jquery-1.10.2.js"></script>
-    <![endif]-->
-    <script src="~/themes/theadmin/content/assets/js/typeahead-bs2.min.js"></script>
+    <meta charset="utf-8">
+    <title>@title</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Themes/TheAdmin/Content/font-google/font-google.css" rel="stylesheet" />
+    <link href="~/Themes/TheAdmin/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Themes/TheAdmin/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Themes/TheAdmin/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/Themes/TheAdmin/Scripts/jquery.knob.js"></script>
     <script type="text/javascript">
-        if ("ontouchend" in document) document.write("<script src='~/themes/theadmin/content/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+        $(function () {
+            $(".knob").knob();
+        });
     </script>
-    <script src="~/Themes/TheAdmin/Scripts/bootstrap.js"></script>
-    <script src="~/Themes/TheAdmin/Scripts/emulator.js"></script>
-    @(Html.Raw(Zone(Model.Script)))
+    <link href="~/Themes/TheAdmin/Content/theme.css" rel="stylesheet" />
+    <link href="~/Themes/TheAdmin/Content/premium.css" rel="stylesheet" />
+    @(Html.Raw(zone(Model.Style)))
+    @(Html.Raw(zone(Model.Script)))
 </head>
-<body>
-    <div class="navbar navbar-default" id="navbar">
-        <script type="text/javascript">
-            try {
-                ace.settings.check('navbar', 'fixed');
-            } catch (e) {
-            }
-        </script>
-        <div class="navbar-container" id="navbar-container">
-            <div class="navbar-header pull-left">
-                <a href="@Url.Action("Index", "AdminHome", new { area = "ChunSun.Mobile.Contents" })" class="navbar-brand" style="padding-bottom: 5px;">
-                    <small>
-                        <img src="~/themes/theadmin/content/logo.png" alt="雨后春笋掌销宝" />
-                    </small>
-                </a>
-                <!-- /.brand -->
-            </div>
-            <!-- /.navbar-header -->
-            <div class="navbar-header pull-right" role="navigation">
-                <ul class="nav ace-nav">
-                    <li class="light-blue">
-                        <a href="http://www.chunsun.cc/helplist/51/1" class="dropdown-toggle" target="_blank" title="帮助中心">
-                            <i class="icon-question"></i>
-                        </a>
-                    </li>
-                    <li class="light-blue">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="联系我们">
-                            <i class="icon-phone"></i>
-                        </a>
-                        <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close" style="width: auto;">
-                            <li class="dropdown-header">
-                                <i class="icon-group"></i>
-                                联系我们
-                            </li>
-                            <li>
-                                <a href="http://www.chunsun.cc/simplepage/contact.html" target="_blank">
-                                    在线客服
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://www.chunsun.cc/simplepage/about.html" target="_blank">
-                                    关于我们
-                                </a>
-                            </li>
-                            <li></li>
-                        </ul>
-                    </li>
-                    @if (Model.Messages != null)
-                    {
-                        @Display(Model.Messages)
-                    }
-                    @if (Model.User != null)
-                    {
-                        @Display(Model.User)
-                    }
-                </ul>
-            </div>
-            <!-- /.navbar-header -->
-        </div>
-        <!-- /.container -->
-    </div>
-    <div class="main-container" id="main-container">
-        <script type="text/javascript">
-            try {
-                ace.settings.check('main-container', 'fixed');
-            } catch (e) {
-            }
-        </script>
-        <div class="main-container-inner">
-            <a class="menu-toggler" id="menu-toggler" href="#">
-                <span class="menu-text"></span>
-            </a>
-            <div class="sidebar" id="sidebar">
-                @Zone(Model.Navigation)
-            </div>
-            @Html.Partial(NormalizePath("./_SidebarPlus.cshtml"))
-            <div class="main-content">
-                <div class="breadcrumbs" id="breadcrumbs">
-                    <script type="text/javascript">
-                        try {
-                            //ace.settings.check('breadcrumbs', 'fixed');
-                        } catch (e) {
-                        }
-                    </script>
-                    @if (Model.Breadcrumb != null)
-                    {
-                        @Zone(Model.Breadcrumb)
-                    }
-                    <!-- .breadcrumb -->
-                    @*<div class="nav-search" id="nav-search">
-                            <form class="form-search">
-                                <span class="input-icon">
-                                    <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-                                    <i class="icon-search nav-search-icon"></i>
-                                </span>
-                            </form>
-                        </div>*@
-                    <!-- #nav-search -->
-                </div>
-
-                <!--[if lt IE 9]>
-                    <div class="alert alert-warning alert-dismissable no-margin" id="warningInfo">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <i class="glyphicon glyphicon-exclamation-sign"></i>
-                        <span style="padding-left: 2px">
-                            系统检测到您所使用的<strong>浏览器版本较低</strong>，推荐使用&nbsp;<a href="http://www.firefox.com.cn/download/" target="_blank">Firefox</a>&nbsp;或&nbsp;<a href="http://www.google.cn/intl/zh-CN/chrome/browser/index.html" target="_blank">Chrome</a>&nbsp;浏览器打开，否则将无法体验完整产品功能。
-                        </span>
-                    </div>
-                <![endif]-->
-                <div class="page-content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <!-- PAGE CONTENT BEGINS -->
-                            @Zone(Model.Content)
-                            <!-- PAGE CONTENT ENDS -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.page-content -->
-            </div>
-            <!-- /.main-content -->
-            @*<div class="ace-settings-container" id="ace-settings-container">
-                    <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-                        <i class="icon-cog bigger-150"></i>
-                    </div>
-                    <div class="ace-settings-box" id="ace-settings-box">
-                        <div>
-                            <div class="pull-left">
-                                <select id="skin-colorpicker" class="hide">
-                                    <option data-skin="default" value="#438EB9">#438EB9</option>
-                                    <option data-skin="skin-1" value="#222A2D">#222A2D</option>
-                                    <option data-skin="skin-2" value="#C6487E">#C6487E</option>
-                                    <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-                                </select>
-                            </div>
-                            <span>&nbsp; Choose Skin</span>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-                            <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-                            <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-                            <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-                            <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-                            <label class="lbl" for="ace-settings-add-container">
-                                Inside
-                                <b>.container</b>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <!-- /#ace-settings-container -->*@
-        </div>
-        <!-- /.main-container-inner -->
-        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-            <i class="icon-double-angle-up icon-only bigger-110"></i>
-        </a>
-    </div>
-    <!-- /.main-container -->
-    <!-- ace scripts -->
-    <script src="~/Themes/TheAdmin/Content/Assets/Js/ace-elements.min.js"></script>
-    <script src="~/Themes/TheAdmin/Content/Assets/Js/ace.min.js"></script>
-    <script src="~/Themes/TheAdmin/Scripts/notification.js"></script>
-    <div id="iphonePreview" style="display: none; position: absolute;z-index: 9900">
-        <div style="cursor: pointer; float: right;">
-            <i class="glyphicon glyphicon-remove-circle" style="font-size: 26px"></i>
-        </div>
-        <div style="background: url('@Url.Content(NormalizePath("../Content/iphone.png"))'); background-size: 100% 100%; ; height: 588px; width: 340px;">
-            <div style="background-color: white; float: left; height: 389px; margin: 103px 0 0 45px; width: 253px;">
-                <iframe style="border: none; height: 100%; width: 100%;" id="ifPreview"></iframe>
-            </div>
-            <div style="background-color: white; float: left; height: 58px; margin: 13px 0 0 145px; opacity: 0; width: 58px;">
-                <button id="btnHome" style="height: 100%; width: 100%;"></button>
-            </div>
-        </div>
-    </div>
+<body class=" theme-blue">
+    <!-- Demo page code -->
     <script type="text/javascript">
-        try { ace.settings.breadcrumbs_fixed(true); } catch (e) { }
-        try { ace.settings.sidebar_fixed(true); } catch (e) { }
+        $(function () {
+            var match = document.cookie.match(new RegExp('color=([^;]+)'));
+            if (match) var color = match[1];
+            if (color) {
+                $('body').removeClass(function (index, css) {
+                    return (css.match(/\btheme-\S+/g) || []).join(' ');
+                });
+                $('body').addClass('theme-' + color);
+            }
+
+            $('[data-popover="true"]').popover({ html: true });
+
+        });
+    </script>
+    <style type="text/css">
+        #line-chart {
+            height: 300px;
+            width: 800px;
+            margin: 0px auto;
+            margin-top: 1em;
+        }
+
+        .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+            color: #fff;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            var uls = $('.sidebar-nav > ul > *').clone();
+            uls.addClass('visible-xs');
+            $('#main-menu').append(uls.clone());
+        });
+    </script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+          <script src="~/Themes/TheAdmin/Scripts/html5shiv.js"></script>
+        <![endif]-->
+
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="" href="~/"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Aircraft</span></a>
+        </div>
+        <div class="navbar-collapse collapse" style="height: 1px;">
+            @zone(Model.User)
+        </div>
+    </div>
+    @zone(Model.Navigation)
+    <div class="content">
+        <div class="header">
+            <div class="stats">
+                <p class="stat"><span class="label label-info">5</span> Tickets</p>
+                <p class="stat"><span class="label label-success">27</span> Tasks</p>
+                <p class="stat"><span class="label label-danger">15</span> Overdue</p>
+            </div>
+            <h1 class="page-title">Dashboard</h1>
+            @zone(Model.Breadcrumb)
+        </div>
+        <div class="main-content">
+            @zone(Model.Content)
+        </div>
+    </div>
+    <script src="~/Themes/TheAdmin/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function () {
+            $('.demo-cancel-click').click(function () { return false; });
+        });
     </script>
 </body>
 </html>

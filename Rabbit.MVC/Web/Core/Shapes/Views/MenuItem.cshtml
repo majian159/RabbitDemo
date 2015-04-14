@@ -1,5 +1,5 @@
 ﻿@{
-    var items = (IEnumerable<dynamic>) Enumerable.Cast<dynamic>(Model);
+    var items = (IEnumerable<dynamic>)Enumerable.Cast<dynamic>(Model);
 }
 @{
     if (Model.LocalNavigation)
@@ -10,37 +10,35 @@
         }
         else
         {
-            if (Model.Href.TrimEnd('/').ToUpperInvariant() == Request.Path.TrimEnd('/').ToUpperInvariant())
+            var isCurrent = Model.Href.TrimEnd('/').ToUpperInvariant() == Request.Path.TrimEnd('/').ToUpperInvariant();
+            <li>
+                @if (!items.Any(i => i.LocalNavigation))
+                {
+                    <a href="@Model.Href">
+                        <span class="fa fa-caret-right"></span>
+                        @Model.Text
+                    </a>
+                }
+                else
+                {
+                    <a data-target=".@Model.Text" class="nav-header@(isCurrent ? " collapsed" : string.Empty)" data-toggle="collapse" href="#">
+                        @if (!string.IsNullOrWhiteSpace(Model.Icon))
+                        {
+                            <i class="@Model.Icon"></i>
+                        }
+                        @Model.Text
+                        <i class="fa fa-collapse"></i>
+                    </a>
+                }
+            </li>
+            if (((IEnumerable<dynamic>)Enumerable.Cast<dynamic>(Model.Items)).Any(i => i.LocalNavigation))
             {
-                Model.Classes.Add("active");
+                <li>
+                    <ul class="@Model.Text nav nav-list collapse@(isCurrent ? string.Empty : " in")">
+                        @DisplayChildren(Model)
+                    </ul>
+                </li>
             }
-            var tag = Tag(Model, "li");
-            @tag.StartElement
-            if (!items.Any(i => i.LocalNavigation))
-            {
-                <a href="@Model.Href">
-                    @if (!string.IsNullOrWhiteSpace(Model.Icon))
-                    {
-                        <i class="@Model.Icon"></i>
-                    }
-                    <span class="menu-text">@Model.Text</span>
-                </a>
-            }
-            else
-            {
-                <a class="dropdown-toggle" href="#">
-                    @if (!string.IsNullOrWhiteSpace(Model.Icon))
-                    {
-                        <i class="@Model.Icon"></i>
-                    }
-                    <span class="menu-text">@Model.Text</span>
-                    <b class="arrow icon-angle-down"></b>
-                </a>
-                <ul class="submenu">
-                    @DisplayChildren(Model)
-                </ul>
-            }
-            @tag.EndElement
         }
     }
 }

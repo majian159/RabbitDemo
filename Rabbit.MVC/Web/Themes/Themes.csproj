@@ -113,31 +113,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default_TheThemeMachine\Theme.txt" />
-    <Content Include="TheAdmin\Content\Assets\Css\ace-rtl.min.css" />
-    <Content Include="TheAdmin\Content\Assets\Css\ace-skins.min.css" />
-    <Content Include="TheAdmin\Content\Assets\Css\ace.min.css" />
-    <Content Include="TheAdmin\Content\Assets\Css\font-awesome-ie7.min.css" />
-    <Content Include="TheAdmin\Content\Assets\Css\font-awesome.min.css" />
-    <Content Include="TheAdmin\Content\Assets\Js\ace-elements.min.js" />
-    <Content Include="TheAdmin\Content\Assets\Js\ace-extra.min.js" />
-    <Content Include="TheAdmin\Content\Assets\Js\ace.min.js" />
-    <Content Include="TheAdmin\Content\Assets\Js\jquery.mobile.custom.min.js" />
-    <Content Include="TheAdmin\Content\Assets\Js\jquery.slimscroll.min.js" />
-    <Content Include="TheAdmin\Content\Assets\Js\typeahead-bs2.min.js" />
-    <Content Include="TheAdmin\Content\Bootstrap\css\bootstrap.css" />
-    <Content Include="TheAdmin\Content\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="TheAdmin\Content\log3.png" />
-    <Content Include="TheAdmin\Content\logo.png" />
-    <Content Include="TheAdmin\Content\logo2.png" />
-    <Content Include="TheAdmin\Scripts\bootstrap.js" />
-    <Content Include="TheAdmin\Scripts\emulator.js" />
+    <Content Include="TheAdmin\Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="TheAdmin\Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="TheAdmin\Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="TheAdmin\Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="TheAdmin\Content\font-google\font-google.css" />
+    <Content Include="TheAdmin\Content\premium.css" />
+    <Content Include="TheAdmin\Content\theme.css" />
+    <Content Include="TheAdmin\Scripts\bootstrap.min.js" />
     <Content Include="TheAdmin\Scripts\html5shiv.js" />
-    <Content Include="TheAdmin\Scripts\jquery.nicescroll\jquery.nicescroll.min.js" />
-    <Content Include="TheAdmin\Scripts\jquery.nicescroll\zoomico.png" />
-    <Content Include="TheAdmin\Scripts\JQuery\jquery-1.10.2.js" />
-    <Content Include="TheAdmin\Scripts\JQuery\jquery-2.0.3.js" />
-    <Content Include="TheAdmin\Scripts\nav.js" />
-    <Content Include="TheAdmin\Scripts\respond.js" />
+    <Content Include="TheAdmin\Scripts\jquery-1.11.1.min.js" />
+    <Content Include="TheAdmin\Scripts\jquery.knob.js" />
     <Content Include="TheAdmin\Theme.txt" />
     <Content Include="TheThemeMachine\Theme.txt" />
   </ItemGroup>
@@ -154,12 +140,16 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="TheAdmin\Content\Assets\Font\fontawesome-webfont.woff" />
+    <Content Include="TheAdmin\Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="TheAdmin\Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="TheAdmin\Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="TheAdmin\Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="TheAdmin\Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="TheAdmin\Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="TheAdmin\Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="TheAdmin\Content\font-google\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
+    <Content Include="TheAdmin\Content\font-google\k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff" />
     <Content Include="TheAdmin\Views\User.cshtml" />
-    <Content Include="TheAdmin\Views\_SidebarPlus.cshtml" />
-    <Content Include="TheAdmin\Content\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="TheAdmin\Content\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="TheAdmin\Content\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
