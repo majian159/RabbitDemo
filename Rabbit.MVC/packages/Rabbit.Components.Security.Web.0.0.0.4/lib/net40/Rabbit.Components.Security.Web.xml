@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rabbit.Components.Security.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Rabbit.Components.Security.Web.AdminFilter">
+            <summary>
+            管理员过滤器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.AdminFilter.#ctor(Rabbit.Components.Security.IAuthorizer)">
+            <summary>
+            初始化一个新的管理过滤器。
+            </summary>
+            <param name="authorizer">授权人。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.AdminFilter.OnAuthorization(System.Web.Mvc.AuthorizationContext)">
+            <summary>
+            在需要授权时调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="P:Rabbit.Components.Security.Web.AdminFilter.T">
+            <summary>
+            获取本地化字符串委托。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Components.Security.Web.AlwaysAccessibleAttribute">
+            <summary>
+            适用于控制器或动作，将阻止任何行动被过滤的 网站前端访问 许可。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Components.Security.Web.NavigationItemBuilderExtensions">
+            <summary>
+            导航项建设者扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.NavigationItemBuilderExtensions.Permission(Rabbit.Web.UI.Navigation.NavigationItemBuilder,Rabbit.Components.Security.Permissions.Permission[])">
+            <summary>
+            许可。
+            </summary>
+            <param name="builder">导航项建设者。</param>
+            <param name="permissions">许可模型。</param>
+            <returns>导航项建设者。</returns>
+        </member>
+        <member name="T:Rabbit.Components.Security.Web.FormsAuthenticationServiceBase">
+            <summary>
+            基于表单授权的服务基类。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.FormsAuthenticationServiceBase.#ctor(Rabbit.Kernel.Environment.Configuration.ShellSettings,Rabbit.Kernel.Services.IClock,Rabbit.Web.IHttpContextAccessor)">
+            <summary>
+            初始化一个表单授权服务。
+            </summary>
+            <param name="settings">租户设置。</param>
+            <param name="clock">时钟服务。</param>
+            <param name="httpContextAccessor">HttpContext访问器。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.FormsAuthenticationServiceBase.SignIn(Rabbit.Components.Security.IUser,System.Boolean)">
+            <summary>
+            登录。
+            </summary>
+            <param name="user">用户模型。</param>
+            <param name="createPersistentCookie">是否创建持久的Cookie。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.FormsAuthenticationServiceBase.SignOut">
+            <summary>
+            登出。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.FormsAuthenticationServiceBase.SetAuthenticatedUserForRequest(Rabbit.Components.Security.IUser)">
+            <summary>
+            为当前请求设置一个身份认证。
+            </summary>
+            <param name="user">用户模型。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.FormsAuthenticationServiceBase.GetAuthenticatedUser">
+            <summary>
+            获取当前认证的用户。
+            </summary>
+            <returns>用户模型。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.FormsAuthenticationServiceBase.GetUserByIdentity(System.String)">
+            <summary>
+            根据用户标识获取用户信息。
+            </summary>
+            <param name="identity">用户标识。</param>
+            <returns>用户模型。</returns>
+        </member>
+        <member name="P:Rabbit.Components.Security.Web.FormsAuthenticationServiceBase.Logger">
+            <summary>
+            日志记录器。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.Web.FormsAuthenticationServiceBase.ExpirationTimeSpan">
+            <summary>
+            过期时间区。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Components.Security.Web.IRoleService">
+            <summary>
+            一个抽象的角色服务。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.IRoleService.GetPermissionsForRoleByName(System.String)">
+            <summary>
+            根级角色的名称获取该角色所拥有的权限。
+            </summary>
+            <param name="name">角色名称。</param>
+            <returns>该角色所拥有的权限。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.DefaultNavigationManager.BuildMenu(System.String)">
+            <summary>
+            生成菜单。
+            </summary>
+            <param name="menuName">菜单名称。</param>
+            <returns>菜单项集合。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.DefaultNavigationManager.BuildImageSets(System.String)">
+            <summary>
+            生成图片集。
+            </summary>
+            <param name="menuName">菜单名称。</param>
+            <returns>图片集。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.DefaultNavigationManager.GetUrl(System.String,System.Web.Routing.RouteValueDictionary)">
+            <summary>
+            获取菜单Url。
+            </summary>
+            <param name="menuItemUrl">菜单项Url。</param>
+            <param name="routeValueDictionary">路由值。</param>
+            <returns>Url。</returns>
+        </member>
+        <member name="T:Rabbit.Components.Security.Web.WebSecurityBuilderExtensions">
+            <summary>
+                日志建设者扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.WebSecurityBuilderExtensions.EnableSecurity(Rabbit.Web.BuilderExtensions.IWebBuilder)">
+            <summary>
+                使用NLog。
+            </summary>
+            <param name="webBuilder">Web建设者。</param>
+        </member>
+        <member name="F:Rabbit.Components.Security.Web.RolesBasedAuthorizationService.AnonymousRole">
+            <summary>
+            匿名用户角色。
+            </summary>
+        </member>
+        <member name="F:Rabbit.Components.Security.Web.RolesBasedAuthorizationService.AuthenticatedRole">
+            <summary>
+            已授权用户角色。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.RolesBasedAuthorizationService.CheckAccess(Rabbit.Components.Security.Permissions.Permission,Rabbit.Components.Security.IUser)">
+            <summary>
+            检查访问权限。
+            </summary>
+            <param name="permission">需要的许可。</param>
+            <param name="user">用户模型。</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="permission"/> 为 null。</exception>
+            <exception cref="T:Rabbit.Components.Security.RabbitSecurityException">检查权限失败。</exception>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.RolesBasedAuthorizationService.TryCheckAccess(Rabbit.Components.Security.Permissions.Permission,Rabbit.Components.Security.IUser)">
+            <summary>
+            尝试检查访问权限。
+            </summary>
+            <param name="permission">需要的许可。</param>
+            <param name="user">用户模型。</param>
+            <returns>如果可以访问则返回true，否则返回false。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="permission"/> 为 null。</exception>
+        </member>
+        <member name="T:Rabbit.Components.Security.Web.SecurityFilter">
+            <summary>
+            安全过滤器。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.SecurityFilter.#ctor(Rabbit.Components.Security.IAuthorizer)">
+            <summary>
+            初始化一个新的安全过滤器。
+            </summary>
+            <param name="authorizer">授权人。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.SecurityFilter.OnAuthorization(System.Web.Mvc.AuthorizationContext)">
+            <summary>
+            在需要授权时调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.SecurityFilter.OnException(System.Web.Mvc.ExceptionContext)">
+            <summary>
+            在发生异常时调用。
+            </summary>
+            <param name="filterContext">筛选器上下文。</param>
+        </member>
+        <member name="P:Rabbit.Components.Security.Web.SecurityFilter.Logger">
+            <summary>
+            日志记录器。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Components.Security.Web.StandardPermissions">
+            <summary>
+            标准权限。
+            </summary>
+        </member>
+        <member name="F:Rabbit.Components.Security.Web.StandardPermissions.AccessAdminPanel">
+            <summary>
+            管理面板权限。
+            </summary>
+        </member>
+        <member name="F:Rabbit.Components.Security.Web.StandardPermissions.AccessFrontEnd">
+            <summary>
+            前端访问权限。
+            </summary>
+        </member>
+        <member name="F:Rabbit.Components.Security.Web.StandardPermissions.Owner">
+            <summary>
+            所有者。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.StandardPermissions.GetPermissions">
+            <summary>
+            获取许可集合。
+            </summary>
+            <returns>许可集合。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Web.StandardPermissions.GetDefaultStereotypes">
+            <summary>
+            获取默认的立体许可集合。
+            </summary>
+            <returns>立体许可集合。</returns>
+        </member>
+        <member name="P:Rabbit.Components.Security.Web.StandardPermissions.Feature">
+            <summary>
+            功能。
+            </summary>
+        </member>
+    </members>
+</doc>

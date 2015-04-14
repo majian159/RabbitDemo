@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rabbit.Components.Security</name>
+    </assembly>
+    <members>
+        <member name="T:Rabbit.Components.Security.CheckAccessContext">
+            <summary>
+            检查访问许可上下文。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.CheckAccessContext.Permission">
+            <summary>
+            许可模型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.CheckAccessContext.User">
+            <summary>
+            需要被检查的用户。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.CheckAccessContext.Granted">
+            <summary>
+            是否通过许可认证。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.CheckAccessContext.Adjusted">
+            <summary>
+            允许外部事件进行权限调整，如果为true框架则会再次进行权限检查，上限为3次。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.CurrentUserWorkContext.Get``1(System.String)">
+            <summary>
+            获取状态信值。
+            </summary>
+            <typeparam name="T">状态类型。</typeparam>
+            <param name="name">状态名称。</param>
+            <returns>获取状态值的委托。</returns>
+        </member>
+        <member name="T:Rabbit.Components.Security.IAuthenticationService">
+            <summary>
+            一个抽象的认证服务。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthenticationService.SignIn(Rabbit.Components.Security.IUser,System.Boolean)">
+            <summary>
+            登录。
+            </summary>
+            <param name="user">用户模型。</param>
+            <param name="createPersistentCookie">是否创建持久的Cookie。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthenticationService.SignOut">
+            <summary>
+            登出。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthenticationService.SetAuthenticatedUserForRequest(Rabbit.Components.Security.IUser)">
+            <summary>
+            为当前请求设置一个身份认证。
+            </summary>
+            <param name="user">用户模型。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthenticationService.GetAuthenticatedUser">
+            <summary>
+            获取当前认证的用户。
+            </summary>
+            <returns>用户模型。</returns>
+        </member>
+        <member name="T:Rabbit.Components.Security.IAuthorizationService">
+            <summary>
+            一个抽象的授权服务。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthorizationService.CheckAccess(Rabbit.Components.Security.Permissions.Permission,Rabbit.Components.Security.IUser)">
+            <summary>
+            检查访问权限。
+            </summary>
+            <param name="permission">需要的许可。</param>
+            <param name="user">用户模型。</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="permission"/> 为 null。</exception>
+            <exception cref="T:Rabbit.Components.Security.RabbitSecurityException">检查权限失败。</exception>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthorizationService.TryCheckAccess(Rabbit.Components.Security.Permissions.Permission,Rabbit.Components.Security.IUser)">
+            <summary>
+            尝试检查访问权限。
+            </summary>
+            <param name="permission">需要的许可。</param>
+            <param name="user">用户模型。</param>
+            <returns>如果可以访问则返回true，否则返回false。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="permission"/> 为 null。</exception>
+        </member>
+        <member name="T:Rabbit.Components.Security.IAuthorizationServiceEventHandler">
+            <summary>
+            一个抽象的授权服务事件处理程序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthorizationServiceEventHandler.Checking(Rabbit.Components.Security.CheckAccessContext)">
+            <summary>
+            检查前执行。
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthorizationServiceEventHandler.Adjust(Rabbit.Components.Security.CheckAccessContext)">
+            <summary>
+            调整完成后执行。
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthorizationServiceEventHandler.Complete(Rabbit.Components.Security.CheckAccessContext)">
+            <summary>
+            授权完成后执行。
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Rabbit.Components.Security.IAuthorizer">
+            <summary>
+            一个抽象的授权人。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthorizer.Authorize(Rabbit.Components.Security.Permissions.Permission)">
+            <summary>
+            针对一个全新对当前用户授权。
+            </summary>
+            <param name="permission">针对的授权许可。</param>
+            <returns>如果授权成功则返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.IAuthorizer.Authorize(Rabbit.Components.Security.Permissions.Permission,Rabbit.Kernel.Localization.LocalizedString)">
+            <summary>
+            对授权许可的当前用户;如果授权失败，将显示指定的消息。
+            </summary>
+            <param name="permission">针对的授权许可。</param>
+            <param name="message">要显示本地化的消息，如果授权失败。</param>
+            <returns>如果授权成功则返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Authorizer.Authorize(Rabbit.Components.Security.Permissions.Permission)">
+            <summary>
+            针对一个全新对当前用户授权。
+            </summary>
+            <param name="permission">针对的授权许可。</param>
+            <returns>如果授权成功则返回true，否则返回false。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Authorizer.Authorize(Rabbit.Components.Security.Permissions.Permission,Rabbit.Kernel.Localization.LocalizedString)">
+            <summary>
+            对授权许可的当前用户;如果授权失败，将显示指定的消息。
+            </summary>
+            <param name="permission">针对的授权许可。</param>
+            <param name="message">要显示本地化的消息，如果授权失败。</param>
+            <returns>如果授权成功则返回true，否则返回false。</returns>
+        </member>
+        <member name="T:Rabbit.Components.Security.IEncryptionService">
+            <summary>
+            一个抽象的加密服务。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.IEncryptionService.Encode(System.Byte[])">
+            <summary>
+            加密。
+            </summary>
+            <param name="data">需要加密的数据。</param>
+            <returns>加密后的数据。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.IEncryptionService.Decode(System.Byte[])">
+            <summary>
+            解密。
+            </summary>
+            <param name="encodedData">需要解密的数据。</param>
+            <returns>解密后的数据。</returns>
+        </member>
+        <member name="T:Rabbit.Components.Security.EncryptionServiceExtensions">
+            <summary>
+            加密服务扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.EncryptionServiceExtensions.Encode(Rabbit.Components.Security.IEncryptionService,System.String)">
+            <summary>
+            加密。
+            </summary>
+            <param name="encryptionService">加密服务。</param>
+            <param name="text">需要加密的文本。</param>
+            <returns>加密后的文本。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.EncryptionServiceExtensions.Decode(Rabbit.Components.Security.IEncryptionService,System.String)">
+            <summary>
+            解密。
+            </summary>
+            <param name="encryptionService">加密服务。</param>
+            <param name="text">需要解密的文本。</param>
+            <returns>解密后的文本。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Impl.DefaultEncryptionService.Encode(System.Byte[])">
+            <summary>
+            加密。
+            </summary>
+            <param name="data">需要加密的数据。</param>
+            <returns>加密后的数据。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Impl.DefaultEncryptionService.Decode(System.Byte[])">
+            <summary>
+            解密。
+            </summary>
+            <param name="encodedData">需要解密的数据。</param>
+            <returns>解密后的数据。</returns>
+        </member>
+        <member name="T:Rabbit.Components.Security.IUser">
+            <summary>
+            一个抽象的用户。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.IUser.Identity">
+            <summary>
+            用户标识。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.IUser.UserName">
+            <summary>
+            用户名称。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Components.Security.IUserRoles">
+            <summary>
+            一个抽象的用户角色接口。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.IUserRoles.Roles">
+            <summary>
+            用户所有角色。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.NullAuthenticationService.SignIn(Rabbit.Components.Security.IUser,System.Boolean)">
+            <summary>
+            登录。
+            </summary>
+            <param name="user">用户模型。</param>
+            <param name="createPersistentCookie">是否创建持久的Cookie。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.NullAuthenticationService.SignOut">
+            <summary>
+            登出。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.NullAuthenticationService.SetAuthenticatedUserForRequest(Rabbit.Components.Security.IUser)">
+            <summary>
+            为当前请求设置一个身份认证。
+            </summary>
+            <param name="user">用户模型。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.NullAuthenticationService.GetAuthenticatedUser">
+            <summary>
+            获取当前认证的用户。
+            </summary>
+            <returns>用户模型。</returns>
+        </member>
+        <member name="T:Rabbit.Components.Security.Permissions.IPermissionProvider">
+            <summary>
+            一个抽象的许可提供程序。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Permissions.IPermissionProvider.GetPermissions">
+            <summary>
+            获取许可集合。
+            </summary>
+            <returns>许可集合。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.Permissions.IPermissionProvider.GetDefaultStereotypes">
+            <summary>
+            获取默认的立体许可集合。
+            </summary>
+            <returns>立体许可集合。</returns>
+        </member>
+        <member name="P:Rabbit.Components.Security.Permissions.IPermissionProvider.Feature">
+            <summary>
+            功能。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Components.Security.Permissions.Permission">
+            <summary>
+            一个许可模型。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.Permissions.Permission.Named(System.String)">
+            <summary>
+            通过名称来新建一个许可。
+            </summary>
+            <param name="name">许可名称。</param>
+            <returns>许可模型。</returns>
+        </member>
+        <member name="P:Rabbit.Components.Security.Permissions.Permission.Name">
+            <summary>
+            许可名称。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.Permissions.Permission.Description">
+            <summary>
+            许可说明。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.Permissions.Permission.Category">
+            <summary>
+            许可分类。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.Permissions.Permission.ImpliedBy">
+            <summary>
+            隐示通过的许可。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Components.Security.Permissions.PermissionStereotype">
+            <summary>
+            一个立体的许可类型。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.Permissions.PermissionStereotype.Name">
+            <summary>
+            许可名称。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.Permissions.PermissionStereotype.Permissions">
+            <summary>
+            许可集合。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Components.Security.RabbitSecurityException">
+            <summary>
+            Rabbit安全异常。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.RabbitSecurityException.#ctor(Rabbit.Kernel.Localization.LocalizedString)">
+            <summary>
+            实例化一个新的Rabbit安全异常。
+            </summary>
+            <param name="message">错误消息。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.RabbitSecurityException.#ctor(Rabbit.Kernel.Localization.LocalizedString,System.Exception)">
+            <summary>
+            实例化一个新的Rabbit安全异常。
+            </summary>
+            <param name="message">错误消息。</param>
+            <param name="innerException">内部异常。</param>
+        </member>
+        <member name="M:Rabbit.Components.Security.RabbitSecurityException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            实例化一个新的Rabbit安全异常。
+            </summary>
+            <param name="info">异常信息。</param>
+            <param name="context">上下文。</param>
+        </member>
+        <member name="P:Rabbit.Components.Security.RabbitSecurityException.PermissionName">
+            <summary>
+            许可名称。
+            </summary>
+        </member>
+        <member name="P:Rabbit.Components.Security.RabbitSecurityException.User">
+            <summary>
+            用户模型。
+            </summary>
+        </member>
+        <member name="T:Rabbit.Components.Security.WorkContentExtensions">
+            <summary>
+            工作上下文扩展方法。
+            </summary>
+        </member>
+        <member name="M:Rabbit.Components.Security.WorkContentExtensions.GetCurrentUser(Rabbit.Kernel.Works.WorkContext)">
+            <summary>
+            获取当前用户。
+            </summary>
+            <param name="workContext">工作上下文。</param>
+            <returns>用户实例。</returns>
+        </member>
+        <member name="M:Rabbit.Components.Security.WorkContentExtensions.GetCurrentUser``1(Rabbit.Kernel.Works.WorkContext)">
+            <summary>
+            获取当前用户。
+            </summary>
+            <typeparam name="T">用户模型类型。</typeparam>
+            <param name="workContext">工作上下文。</param>
+            <returns>用户实例。</returns>
+        </member>
+    </members>
+</doc>
