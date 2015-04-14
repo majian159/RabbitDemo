@@ -1,20 +1,20 @@
-﻿@*@using System.Linq;
-    @using Rabbit.Web.UI.Navigation
-    @{
-        //获取面包屑导航集合。
-        IEnumerable<MenuItem> menus = Model.GetMenus(Request, Request.RequestContext.RouteData.Values);
-        //得到当前页面的菜单项。
-        //    var currentMenuItem = menus.LastOrDefault();
-    }
-    @#1#if (menus != null && menus.Any())
+﻿@using System.Linq;
+@using Rabbit.Web.UI.Navigation
+@{
+    //获取面包屑导航集合。
+    IEnumerable<MenuItem> menus = Model.GetMenus(Request, Request.RequestContext.RouteData.Values);
+    //得到当前页面的菜单项。
+    var currentMenuItem = menus.LastOrDefault();
+}
+@if (menus != null && menus.Any())
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Admin", new { area = "Rabbit.UserInterface" })">首页</a>
+        </li>
+        @if (currentMenuItem != null)
         {
-            <ul class="breadcrumb">
-                <li>
-                    <a href="@Url.Action("Index", "Admin", new { area = "Rabbit.UserInterface" })">首页</a>
-                </li>
-                @if (currentMenuItem != null)
-                {
-                    <li class="active" href="@currentMenuItem.Href">@currentMenuItem.Text</li>
-                }
-            </ul>
-        }#1#*@
+            <li class="active" href="@currentMenuItem.Href">@currentMenuItem.Text</li>
+        }
+    </ul>
+}

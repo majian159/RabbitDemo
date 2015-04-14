@@ -54,8 +54,8 @@
       <HintPath>..\..\..\packages\Rabbit.Components.Security.0.0.0.2\lib\net40\Rabbit.Components.Security.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Rabbit.Components.Security.Web, Version=0.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Rabbit.Components.Security.Web.0.0.0.3\lib\net40\Rabbit.Components.Security.Web.dll</HintPath>
+    <Reference Include="Rabbit.Components.Security.Web, Version=0.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Rabbit.Components.Security.Web.0.0.0.4\lib\net40\Rabbit.Components.Security.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Kernel">
