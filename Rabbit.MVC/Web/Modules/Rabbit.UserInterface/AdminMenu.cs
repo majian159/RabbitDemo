@@ -28,13 +28,9 @@ namespace Rabbit.UserInterface
                         .LocalNavigation()
                         .Icon("fa fa-fw fa-dashboard")
                         .Add(T("主页"), i => i.Action("Index", "Admin", new { Area = area }).LocalNavigation())
-                        .Add(T("会员CRM"), i => i.Action("Index", "MemberCrm", new { Area = area }).LocalNavigation()
-                            .Add(T("编辑会员资料"), z => z.Action("Edit", "MemberCrm", new { Area = area })))
-                        .Add(T("会员卡设置"), i => i.Action("Index", "MemberCardSetting", new { Area = area }).LocalNavigation()
-                            .Add(T("添加特权"), z => z.Action("AddPrivilege", "MemberCardSetting", new { Area = area }))
-                            .Add(T("编辑特权"), z => z.Action("EditPrivilege", "MemberCardSetting", new { Area = area })))
-                        .Add(T("会员卡管理"), i => i.Action("Index", "MemberCardAdmin", new { Area = area }).LocalNavigation()
-                            .Add(T("编辑会员卡资料"), z => z.Action("Edit", "MemberCardAdmin", new { Area = area })))
+                        .Add(T("User List"), i => i.Action("UserList", "User", new { Area = area }).LocalNavigation())
+                        .Add(T("User Profile"), i => i.Action("UserProfile", "User", new { Area = area }).LocalNavigation())
+                        .Add(T("Media"), i => i.Action("Media", "Admin", new { Area = area }).LocalNavigation())
                 );
         }
 

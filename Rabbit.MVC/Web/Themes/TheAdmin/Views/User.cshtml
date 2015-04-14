@@ -1,11 +1,12 @@
-﻿<ul id="main-menu" class="nav navbar-nav navbar-right">
+﻿@using Rabbit.Components.Security
+<ul id="main-menu" class="nav navbar-nav navbar-right">
     <li class="dropdown hidden-xs">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> Jack Smith
+            <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> @(WorkContext.Resolve<IAuthenticationService>().GetAuthenticatedUser().UserName)
             <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+            <li><a tabindex="-1" href="~/Account/SignOut">登出</a></li>
         </ul>
     </li>
 </ul>
