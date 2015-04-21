@@ -1,4 +1,5 @@
 ﻿using Rabbit.Components.Security;
+using Rabbit.Infrastructures.Security;
 using Rabbit.UserInterface.ViewModels;
 using System.Web.Mvc;
 

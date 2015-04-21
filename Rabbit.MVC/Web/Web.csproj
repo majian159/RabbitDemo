@@ -167,6 +167,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rabbit.Infrastructures\Rabbit.Infrastructures.csproj">
+      <Project>{0c010e8f-9dc3-47e2-ac8c-421d0a159d31}</Project>
+      <Name>Rabbit.Infrastructures</Name>
+    </ProjectReference>
     <ProjectReference Include="Core\Rabbit.Core.csproj">
       <Project>{eee7d410-42b1-419e-96fb-a29bc782f41b}</Project>
       <Name>Rabbit.Core</Name>

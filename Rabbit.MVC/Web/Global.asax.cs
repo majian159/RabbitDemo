@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Rabbit.Components.Logging.NLog;
 using Rabbit.Components.Security.Web;
+using Rabbit.Infrastructures;
 using Rabbit.Kernel;
 using Rabbit.Kernel.Caching;
 using Rabbit.Kernel.Caching.Impl;
@@ -71,6 +72,9 @@ namespace Web
             kernelBuilder.UseCaching(c => c.UseMemoryCache());
             kernelBuilder.UseLogging(c => c.UseNLog());
             kernelBuilder.UseWeb(c => c.EnableMvc().EnableSecurity());
+
+            //开启基础设置层。
+            kernelBuilder.UseInfrastructures();
 
             var container = kernelBuilder.Build();
 

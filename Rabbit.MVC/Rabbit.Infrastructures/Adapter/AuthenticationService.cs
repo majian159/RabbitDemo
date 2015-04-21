@@ -1,29 +1,13 @@
 ﻿using Rabbit.Components.Security;
 using Rabbit.Components.Security.Web;
+using Rabbit.Infrastructures.Security;
 using Rabbit.Kernel.Environment.Configuration;
 using Rabbit.Kernel.Extensions;
 using Rabbit.Kernel.Services;
 using Rabbit.Web;
 
-namespace Rabbit.UserInterface
+namespace Rabbit.Infrastructures.Adapter
 {
-    public class UserModel : IUser
-    {
-        #region Implementation of IUser
-
-        /// <summary>
-        /// 用户标识。
-        /// </summary>
-        public string Identity { get; set; }
-
-        /// <summary>
-        /// 用户名称。
-        /// </summary>
-        public string UserName { get; set; }
-
-        #endregion Implementation of IUser
-    }
-
     [SuppressDependency("Rabbit.Components.Security.NullAuthenticationService")]
     internal sealed class AuthenticationService : FormsAuthenticationServiceBase
     {

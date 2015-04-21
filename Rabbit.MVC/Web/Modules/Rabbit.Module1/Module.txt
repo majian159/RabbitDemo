@@ -1,0 +1,12 @@
+﻿Name: Rabbit.Module1
+Category: Default
+Description: 模块1。
+FeatureDescription: 
+Version: 1.0.0.0
+KernelVersion: 1.0.0.0
+WebSite: 
+Company: 
+Author: KAnts
+Tags: 
+Dependencies: 
+Features: 

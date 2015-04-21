@@ -3,7 +3,7 @@ using Rabbit.Components.Security.Web;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Rabbit.UserInterface
+namespace Rabbit.Infrastructures.Adapter
 {
     internal sealed class RoleService : IRoleService
     {

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列特性集
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Rabbit.UserInterface")]
+[assembly: AssemblyTitle("Rabbit.ModuleManager")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Rabbit.UserInterface")]
+[assembly: AssemblyProduct("Rabbit.ModuleManager")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于 typelib 的 ID
-[assembly: Guid("473bfc11-4ed0-4db6-a993-890fccbe7db2")]
+[assembly: Guid("595b5e5b-e2a2-4480-bae8-5ad8b3a66b02")]
 
 // 程序集的版本信息由下列四个值组成:
 //
