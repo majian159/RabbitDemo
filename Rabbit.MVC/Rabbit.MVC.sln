@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.Module1", "Web\Modul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.ModuleManager", "Web\Modules\Rabbit.ModuleManager\Rabbit.ModuleManager.csproj", "{79ACD51A-DBA1-40C0-86B3-60C14F97B81B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.Infrastructures", "Rabbit.Infrastructures\Rabbit.Infrastructures.csproj", "{0C010E8F-9DC3-47E2-AC8C-421D0A159D31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.Infrastructures", "Rabbit.Infrastructures\Rabbit.Infrastructures.csproj", "{6AC79327-EB34-4A9D-AD88-ABFC130914CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +51,10 @@ Global
 		{79ACD51A-DBA1-40C0-86B3-60C14F97B81B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79ACD51A-DBA1-40C0-86B3-60C14F97B81B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79ACD51A-DBA1-40C0-86B3-60C14F97B81B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C010E8F-9DC3-47E2-AC8C-421D0A159D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C010E8F-9DC3-47E2-AC8C-421D0A159D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C010E8F-9DC3-47E2-AC8C-421D0A159D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C010E8F-9DC3-47E2-AC8C-421D0A159D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AC79327-EB34-4A9D-AD88-ABFC130914CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AC79327-EB34-4A9D-AD88-ABFC130914CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AC79327-EB34-4A9D-AD88-ABFC130914CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC79327-EB34-4A9D-AD88-ABFC130914CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
