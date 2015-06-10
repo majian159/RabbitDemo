@@ -28,12 +28,13 @@ namespace Rabbit.ModuleManager.Controllers
         {
             var availableFeatures = _extensionManager.AvailableFeatures().Select(i => i.Id).ToArray();
             var currentFeatures = _shellDescriptor.Features.Select(i => i.Name).ToArray();
-
+            var requiredFeatures = _featureManager.GetRequiredFeatures();
             var model = availableFeatures.Select(i => new FeatureViewModel
             {
                 Name = i,
-                Enable = currentFeatures.Contains(i)
-            }).ToArray();
+                Enable = currentFeatures.Contains(i),
+                IsRequired = requiredFeatures.Contains(i)
+            }).OrderBy(i => i.IsRequired).ToArray();
 
             return View(model);
         }
