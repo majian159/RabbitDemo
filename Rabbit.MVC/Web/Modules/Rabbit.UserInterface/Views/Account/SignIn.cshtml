@@ -72,15 +72,15 @@
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.ReturnUrl)
                     <div class="form-group">
-                        <label>用户名</label>
-                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                        <label>@Html.DisplayNameFor(model => model.Account)</label>
+                        @Html.TextBoxFor(model => model.Account, new { @class = "form-control" })
                     </div>
                     <div class="form-group">
-                        <label>密码</label>
+                        <label>@Html.DisplayNameFor(model => model.Password)</label>
                         @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">登录</button>
-                    <a href="#" class="pull-right" style="margin: 8px 10px">注册</a>
+                    <a href="@Url.Action("Register")" class="pull-right" style="margin: 8px 10px">注册</a>
                     <label class="remember-me">@Html.CheckBoxFor(model => model.Remember) 记住我</label>
                     <div class="clearfix"></div>
                 }

@@ -5,9 +5,9 @@ namespace Rabbit.UserInterface.ViewModels
 {
     public sealed class SignInViewModel
     {
-        [DisplayName("用户名")]
+        [DisplayName("账号")]
         [Required]
-        public string UserName { get; set; }
+        public string Account { get; set; }
 
         [DisplayName("密码")]
         [Required]
@@ -21,7 +21,7 @@ namespace Rabbit.UserInterface.ViewModels
     public sealed class RegisterViewModel
     {
         [DisplayName("用户名")]
-        [Required, StringLength(20, MinimumLength = 4)]
+        [Required, StringLength(20, MinimumLength = 2)]
         public string UserName { get; set; }
 
         [DisplayName("密码")]

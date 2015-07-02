@@ -1,17 +1,111 @@
-﻿@model dynamic
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
+﻿@model Rabbit.UserInterface.ViewModels.RegisterViewModel
+<!doctype html>
+<html lang="en">
 <head>
-    <title>title</title>
+    <meta charset="utf-8">
+    <title>注册</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Themes/TheAdmin/Content/font-google/font-google.css" rel="stylesheet" />
+    <link href="~/Themes/TheAdmin/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Themes/TheAdmin/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Themes/TheAdmin/Scripts/jquery-1.11.1.min.js"></script>
+    <link href="~/Themes/TheAdmin/Content/theme.css" rel="stylesheet" />
+    <link href="~/Themes/TheAdmin/Content/premium.css" rel="stylesheet" />
 </head>
-<body>
-    <div>
+<body class=" theme-blue">
+    <!-- Demo page code -->
+    <script type="text/javascript">
+        $(function () {
+            var match = document.cookie.match(new RegExp('color=([^;]+)'));
+            if (match) var color = match[1];
+            if (color) {
+                $('body').removeClass(function (index, css) {
+                    return (css.match(/\btheme-\S+/g) || []).join(' ');
+                });
+                $('body').addClass('theme-' + color);
+            }
+            $('[data-popover="true"]').popover({ html: true });
+        });
+    </script>
+    <style type="text/css">
+        #line-chart {
+            height: 300px;
+            margin: 0px auto;
+            margin-top: 1em;
+            width: 800px;
+        }
+
+        .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+            color: #fff;
+        }
+
+        .validation-summary-valid {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            var uls = $('.sidebar-nav > ul > *').clone();
+            uls.addClass('visible-xs');
+            $('#main-menu').append(uls.clone());
+        });
+    </script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="~/Themes/TheAdmin/Scripts/html5shiv.js"></script>
+    <![endif]-->
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="" href="~/"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Aircraft</span></a>
+        </div>
+        <div class="navbar-collapse collapse" style="height: 1px;">
+        </div>
     </div>
+    <div class="dialog">
+        <div class="panel panel-default">
+            <p class="panel-heading no-collapse">注册</p>
+            <div class="panel-body">
+                @Html.ValidationSummary(string.Empty, new { @class = "alert alert-error" })
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.Account)</label>
+                        @Html.TextBoxFor(model => model.Account, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.UserName)</label>
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.Password)</label>
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.ConfirmPassword)</label>
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">注册</button>
+                    <a href="@Url.Action("SignIn")" c class="pull-right" style="margin: 8px 10px">登录</a>
+                    <div class="clearfix"></div>
+                }
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var summary = $(".validation-summary-valid");
+        if (summary.find("li:visible").length > 0) {
+            summary.show();
+        }
+    </script>
+    <script src="~/Themes/TheAdmin/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function () {
+            $('.demo-cancel-click').click(function () { return false; });
+        });
+    </script>
 </body>
 </html>

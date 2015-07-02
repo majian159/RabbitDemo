@@ -1,4 +1,5 @@
 ﻿using Rabbit.Components.Data;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Rabbit.UserInterface.Models
@@ -36,6 +37,7 @@ namespace Rabbit.UserInterface.Models
         {
             return new UserRecord
             {
+                Id = Guid.NewGuid().ToString("N"),
                 Account = account,
                 Name = name
             };

@@ -13,7 +13,7 @@ namespace Rabbit.Infrastructures
 
         public string[] GetRequiredFeatures()
         {
-            return new[] { "Rabbit.Kernel", "Rabbit.Components.Logging.NLog", "Rabbit.Web", "Rabbit.Web.Mvc", "Rabbit.Components.Security", "Rabbit.Components.Security.Web", "Rabbit.Infrastructures", "Shapes", "Default_TheThemeMachine", "TheAdmin", "TheThemeMachine", "Rabbit.ModuleManager" };
+            return new[] { "Rabbit.Kernel", "Rabbit.Components.Logging.NLog", "Rabbit.Web", "Rabbit.Web.Mvc", "Rabbit.Components.Security", "Rabbit.Components.Security.Web", "Rabbit.Infrastructures", "Shapes", "Default_TheThemeMachine", "TheAdmin", "TheThemeMachine", "Rabbit.ModuleManager", "Rabbit.Components.Data.EntityFramework", "Rabbit.Components.Data.Mvc", "Rabbit.Components.Data.Migrators" };
         }
 
         #endregion Implementation of IFeatureManager

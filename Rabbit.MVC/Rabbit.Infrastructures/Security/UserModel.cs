@@ -1,11 +1,12 @@
 ﻿using Rabbit.Components.Security;
+using System.Collections.Generic;
 
 namespace Rabbit.Infrastructures.Security
 {
     /// <summary>
     /// 用户模型。
     /// </summary>
-    public class UserModel : IUser
+    public class UserModel : IUser, IUserRoles
     {
         #region Implementation of IUser
 
@@ -20,5 +21,14 @@ namespace Rabbit.Infrastructures.Security
         public string UserName { get; set; }
 
         #endregion Implementation of IUser
+
+        #region Implementation of IUserRoles
+
+        /// <summary>
+        /// 用户所有角色。
+        /// </summary>
+        public IList<string> Roles { get { return new List<string> { "administrator" }; } }
+
+        #endregion Implementation of IUserRoles
     }
 }

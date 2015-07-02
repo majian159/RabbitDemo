@@ -1,8 +1,8 @@
 ﻿using Rabbit.Components.Data;
 using Rabbit.Kernel.Utility.Extensions;
+using Rabbit.UserInterface.Util;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Rabbit.UserInterface.Models
 {
@@ -39,7 +39,7 @@ namespace Rabbit.UserInterface.Models
         {
             password.NotEmptyOrWhiteSpace("password");
 
-            Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(password));
+            Password = EncryptHelper.Encrypt(password);
             return this;
         }
 

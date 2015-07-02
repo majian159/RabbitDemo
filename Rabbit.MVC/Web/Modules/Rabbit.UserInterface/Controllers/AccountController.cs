@@ -35,21 +35,21 @@ namespace Rabbit.UserInterface.Controllers
             return View(new SignInViewModel { ReturnUrl = returnUrl });
         }
 
-        [ActionName("SignIn")]
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult SignInPost(SignInViewModel model)
+        public ActionResult SignIn(SignInViewModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
 
             //验证失败。
-            if (!_accountService.Check(model.UserName, model.Password))
+            if (!_accountService.Exist(model.Account, model.Password))
             {
                 ModelState.AddModelError(string.Empty, "用户名或密码错误。");
                 return View(model);
             }
 
-            _authenticationService.SignIn(new UserModel { Identity = model.UserName, UserName = model.UserName }, model.Remember);
+            _authenticationService.SignIn(new UserModel { Identity = model.Account, UserName = model.Account }, model.Remember);
+
             if (string.IsNullOrWhiteSpace(model.ReturnUrl))
                 return RedirectToAction("Index", "Admin");
             return Redirect(model.ReturnUrl);
