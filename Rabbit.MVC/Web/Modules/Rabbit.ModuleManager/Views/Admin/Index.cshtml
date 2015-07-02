@@ -1,0 +1,43 @@
+﻿@model Rabbit.ModuleManager.ViewModels.FeatureViewModel[]
+@using (Html.BeginForm())
+{
+    <div class="btn-toolbar list-toolbar">
+        <button class="btn btn-primary">保存</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 80px">是否启用</th>
+                <th>名称</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var feature in Model)
+            {
+                <tr>
+                    <td style="text-align: center">
+                        @{
+                            var inputBuilder = new TagBuilder("input");
+                            inputBuilder.Attributes["type"] = "checkbox";
+                            inputBuilder.Attributes["value"] = feature.Name;
+                            if (feature.Enable)
+                            {
+                                inputBuilder.Attributes["checked"] = "checked";
+                            }
+                            if (feature.IsRequired)
+                            {
+                                inputBuilder.Attributes["disabled"] = "disabled";
+                            }
+                            else
+                            {
+                                inputBuilder.Attributes["name"] = "cbk";
+                            }
+                        }
+                        @Html.Raw(inputBuilder)
+                    </td>
+                    <td>@feature.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -77,6 +77,7 @@
     <Reference Include="System.Net.Http.WebRequest">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.Http.WebRequest.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -109,9 +110,11 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter\AuthenticationService.cs" />
+    <Compile Include="Adapter\DefaultShellDescriptorManager.cs" />
     <Compile Include="Adapter\RoleService.cs" />
     <Compile Include="BuilderExtensions.cs" />
     <Compile Include="FeatureManager.cs" />

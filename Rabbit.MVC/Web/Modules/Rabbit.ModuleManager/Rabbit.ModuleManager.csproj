@@ -121,7 +121,6 @@
   <ItemGroup>
     <Content Include="Module.txt" />
     <Content Include="packages.config" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -149,6 +148,9 @@
       <Project>{0c010e8f-9dc3-47e2-ac8c-421d0a159d31}</Project>
       <Name>Rabbit.Infrastructures</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
