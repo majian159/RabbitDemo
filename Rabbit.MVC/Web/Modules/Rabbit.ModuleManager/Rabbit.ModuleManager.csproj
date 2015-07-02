@@ -60,8 +60,9 @@
     <Reference Include="Rabbit.Web">
       <HintPath>..\..\..\packages\Rabbit.Web.1.0.1.4\lib\net40\Rabbit.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Rabbit.Web.Mvc">
-      <HintPath>..\..\..\packages\Rabbit.Web.Mvc.1.0.1.4\lib\net40\Rabbit.Web.Mvc.dll</HintPath>
+    <Reference Include="Rabbit.Web.Mvc, Version=1.0.1.6, Culture=neutral, PublicKeyToken=31a868cd2ac9f841, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Rabbit.Web.Mvc.1.0.1.7\lib\net40\Rabbit.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

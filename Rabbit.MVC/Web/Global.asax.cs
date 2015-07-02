@@ -1,4 +1,8 @@
 ﻿using Autofac;
+using Rabbit.Components.Data;
+using Rabbit.Components.Data.EntityFramework;
+using Rabbit.Components.Data.Migrators;
+using Rabbit.Components.Data.Mvc;
 using Rabbit.Components.Logging.NLog;
 using Rabbit.Components.Security.Web;
 using Rabbit.Infrastructures;
@@ -72,6 +76,12 @@ namespace Web
             kernelBuilder.UseCaching(c => c.UseMemoryCache());
             kernelBuilder.UseLogging(c => c.UseNLog());
             kernelBuilder.UseWeb(c => c.EnableMvc().EnableSecurity());
+            kernelBuilder.UseData(c =>
+            {
+                c.UseEntityFramework();
+                c.EnableMvcFilterTransaction();
+                c.EnableDataMigrators();
+            });
 
             //开启基础设置层。
             kernelBuilder.UseInfrastructures();

@@ -1,4 +1,7 @@
 ﻿Name: Default
 State: Running
+DataProvider: SqlServer
+DataConnectionString: Data Source=.;Initial Catalog=RabbitDemo;Persist Security Info=True;User ID=sa;Password=46617237;MultipleActiveResultSets=true
+DataTablePrefix: null
 RequestUrlPrefix: null
 RequestUrlHost: null
