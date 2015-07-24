@@ -45,25 +45,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Rabbit.Components.Security, Version=0.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Rabbit.Components.Security.0.0.0.3\lib\net40\Rabbit.Components.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Rabbit.Components.Security.Web, Version=0.0.0.6, Culture=neutral, PublicKeyToken=31a868cd2ac9f841, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Rabbit.Components.Security.Web.0.0.0.6\lib\net40\Rabbit.Components.Security.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="Rabbit.Kernel">
-      <HintPath>..\packages\Rabbit.Kernel.1.0.1.7\lib\net40\Rabbit.Kernel.dll</HintPath>
+    <Reference Include="Rabbit.Components.Security, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31a868cd2ac9f841, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Components.Security.1.2.0.0\lib\net40\Rabbit.Components.Security.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Rabbit.Web">
-      <HintPath>..\packages\Rabbit.Web.1.0.1.4\lib\net40\Rabbit.Web.dll</HintPath>
+    <Reference Include="Rabbit.Components.Security.Web, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31a868cd2ac9f841, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Components.Security.Web.1.2.0.0\lib\net40\Rabbit.Components.Security.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Rabbit.Web.Mvc, Version=1.0.1.6, Culture=neutral, PublicKeyToken=31a868cd2ac9f841, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Rabbit.Web.Mvc.1.0.1.7\lib\net40\Rabbit.Web.Mvc.dll</HintPath>
+    <Reference Include="Rabbit.Kernel, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31a868cd2ac9f841, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Kernel.1.2.0.0\lib\net40\Rabbit.Kernel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rabbit.Web, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31a868cd2ac9f841, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Web.1.2.0.0\lib\net40\Rabbit.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rabbit.Web.Mvc, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31a868cd2ac9f841, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Web.Mvc.1.2.0.0\lib\net40\Rabbit.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
